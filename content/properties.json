@@ -1,0 +1,186 @@
+{
+    "items": [
+        {
+            "bathrooms": 3,
+            "budgetTier": "1-5",
+            "price": 3200000,
+            "area": 1450,
+            "status": "Ready",
+            "location": "Downtown Dubai",
+            "amenities": [
+                "Pool",
+                "Gym",
+                "Concierge",
+                "Parking"
+            ],
+            "bedrooms": 2,
+            "title": "Example Residence \u2014 Downtown Dubai",
+            "type": "Apartment",
+            "id": "p1",
+            "image": "/images/properties/worlds-tallest-skyscrapers-moss-and-fog-burj-khalifa-1536x864.jpg",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Buy"
+        },
+        {
+            "bathrooms": 6,
+            "budgetTier": "5-10",
+            "price": 7800000,
+            "area": 5600,
+            "status": "Off-Plan",
+            "location": "Dubai Hills Estate",
+            "amenities": [
+                "Private Garden",
+                "Maid's Room",
+                "Golf Course View"
+            ],
+            "bedrooms": 5,
+            "title": "Example Villa \u2014 Dubai Hills Estate",
+            "type": "Villa",
+            "id": "p2",
+            "image": "/images/properties/167aa7204f5c0b00.webp",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Off-Plan"
+        },
+        {
+            "bathrooms": 2,
+            "budgetTier": "1-5",
+            "price": 1950000,
+            "area": 820,
+            "status": "Ready",
+            "location": "Business Bay",
+            "amenities": [
+                "Canal View",
+                "Gym",
+                "Covered Parking"
+            ],
+            "bedrooms": 1,
+            "title": "Example Tower \u2014 Business Bay",
+            "type": "Apartment",
+            "id": "p3",
+            "image": "/images/properties/dubai-neighborhood-business-bay.webp",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Rent"
+        },
+        {
+            "bathrooms": 5,
+            "budgetTier": "10+",
+            "price": 18500000,
+            "area": 6200,
+            "status": "Ready",
+            "location": "Palm Jumeirah",
+            "amenities": [
+                "Private Pool",
+                "Beach Access",
+                "Sea View"
+            ],
+            "bedrooms": 4,
+            "title": "Example Penthouse \u2014 Palm Jumeirah",
+            "type": "Penthouse",
+            "id": "p4",
+            "image": "/images/properties/palm-jumeirah-media-3-dtcm.avif",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Buy"
+        },
+        {
+            "bathrooms": 4,
+            "budgetTier": "1-5",
+            "price": 4400000,
+            "area": 2600,
+            "status": "Off-Plan",
+            "location": "Arabian Ranches",
+            "amenities": [
+                "Community Pool",
+                "Parks Nearby",
+                "Pet Friendly"
+            ],
+            "bedrooms": 3,
+            "title": "Example Townhouse \u2014 Arabian Ranches",
+            "type": "Townhouse",
+            "id": "p5",
+            "image": "/images/properties/64697076.jpg",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Off-Plan"
+        },
+        {
+            "bathrooms": 2,
+            "budgetTier": "1-5",
+            "price": 2650000,
+            "area": 1180,
+            "status": "Ready",
+            "location": "Dubai Marina",
+            "amenities": [
+                "Marina View",
+                "Gym",
+                "Balcony"
+            ],
+            "bedrooms": 2,
+            "title": "Example Marina Apartment \u2014 Dubai Marina",
+            "type": "Apartment",
+            "id": "p6",
+            "image": "/images/properties/dubai-marina-1560x10002.avif",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Rent"
+        },
+        {
+            "bathrooms": 3,
+            "budgetTier": "5-10",
+            "price": 6100000,
+            "area": 2100,
+            "status": "Ready",
+            "location": "Dubai Marina",
+            "amenities": [
+                "Marina View",
+                "Pool",
+                "Gym",
+                "Concierge"
+            ],
+            "bedrooms": 3,
+            "title": "Example Residence \u2014 Dubai Marina",
+            "type": "Apartment",
+            "id": "p7",
+            "image": "/images/properties/dubai-marina-1560x10002.avif",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Buy"
+        },
+        {
+            "bathrooms": 2,
+            "budgetTier": "1-5",
+            "price": 2100000,
+            "area": 950,
+            "status": "Ready",
+            "location": "Business Bay",
+            "amenities": [
+                "City View",
+                "Gym",
+                "Covered Parking"
+            ],
+            "bedrooms": 2,
+            "title": "Example Apartment \u2014 Business Bay",
+            "type": "Apartment",
+            "id": "p8",
+            "image": "/images/properties/dubai-neighborhood-business-bay.webp",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Rent"
+        },
+        {
+            "bathrooms": 4,
+            "budgetTier": "10+",
+            "price": 11200000,
+            "area": 4200,
+            "status": "Off-Plan",
+            "location": "Dubai Hills Estate",
+            "amenities": [
+                "Golf Course View",
+                "Private Garden",
+                "Smart Home"
+            ],
+            "bedrooms": 4,
+            "title": "Example Villa \u2014 Dubai Hills Estate II",
+            "type": "Villa",
+            "id": "p9",
+            "image": "/images/properties/167aa7204f5c0b00.webp",
+            "description": "A placeholder listing description. Replace with real copy once inventory is confirmed.",
+            "category": "Off-Plan"
+        }
+    ]
+}

@@ -1,0 +1,1114 @@
+/* =========================================================
+   SOMARA REALTY — Design tokens
+   Palette calibrated against the CK Realty reference the client
+   approved: true near-black, warm saturated gold, outlined cards.
+   Swap these variables once official brand hex codes are supplied.
+   ========================================================= */
+:root {
+  --ink: #0b0a08;
+  --ink-2: #151210;
+  --ink-3: #2a2119;
+
+  --ivory: #f5f0e6;
+  --ivory-dim: #cfc6b6;
+  --stone: #8f8577;
+
+  --gold: #c6a164;
+  --gold-bright: #e0c087;
+  --gold-dim: #9c7c4a;
+
+  --error: #b3543f;
+  --success: #6f8f6a;
+
+  --container-max: 1280px;
+  --radius: 3px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Work Sans", -apple-system, "Segoe UI", sans-serif;
+}
+
+/* =========================================================
+   Reset
+   ========================================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; max-width: 100%; }
+body {
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; }
+input, select, textarea { font-family: inherit; font-size: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Layout helpers
+   ========================================================= */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) { .container { padding-inline: 2.5rem; } }
+@media (min-width: 1200px) { .container { padding-inline: 3.5rem; } }
+
+.section { padding-block: 5.5rem; }
+@media (max-width: 640px) { .section { padding-block: 3.5rem; } }
+
+/* =========================================================
+   Typography
+   ========================================================= */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 3.2vw + 1.4rem, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+}
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 2.2vw + 1.2rem, 3.25rem); line-height: 1.1; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.625rem, 1.6vw + 1rem, 2.375rem); line-height: 1.16; }
+h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 0.8vw + 1rem, 1.625rem); line-height: 1.24; }
+h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
+
+.body-lg { font-size: 1.125rem; line-height: 1.6; color: var(--ivory-dim); }
+.body-sm { font-size: 0.875rem; line-height: 1.55; color: var(--stone); }
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background-color 200ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--gold); color: var(--ink); box-shadow: 0 2px 12px rgba(11,10,8,0.35); }
+.btn-primary:hover { background: var(--gold-bright); }
+.btn-outline { background: transparent; color: var(--ivory); border-color: rgba(198,161,100,0.5); }
+.btn-outline:hover { border-color: var(--gold); background: rgba(198,161,100,0.08); }
+.btn-block { width: 100%; }
+
+/* =========================================================
+   Header
+   ========================================================= */
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease), backdrop-filter 300ms var(--ease);
+}
+.site-header.is-solid {
+  background: rgba(11, 10, 8, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom-color: rgba(198, 161, 100, 0.4);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  color: var(--ivory);
+}
+.logo:hover { color: var(--gold); }
+
+.main-nav { display: none; }
+.main-nav ul { display: flex; align-items: center; gap: 2.5rem; }
+.main-nav a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  transition: color 150ms var(--ease);
+}
+.main-nav a:hover, .main-nav a.active { color: var(--gold); }
+
+.header-cta { display: none; }
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+  border: none;
+  color: var(--ivory);
+}
+
+@media (min-width: 900px) {
+  .main-nav { display: block; }
+  .header-cta { display: inline-flex; }
+  .menu-toggle { display: none; }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--ink);
+  display: none;
+  flex-direction: column;
+}
+.mobile-menu.is-open { display: flex; }
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+}
+.mobile-menu nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+}
+.mobile-menu nav a {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  padding: 0.6rem 0;
+  color: var(--ivory);
+}
+.mobile-menu nav a:hover { color: var(--gold); }
+.mobile-menu-footer { padding: 0 1.5rem 2.5rem; }
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+ 
+  background: var(--ink);
+  padding-top: 6rem;
+}
+.hero > .container {
+  width: 100%;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-bg .grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image:
+    linear-gradient(var(--gold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.hero-bg .glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 80vh;
+  filter: blur(140px);
+  background: radial-gradient(circle, rgba(198,161,100,0.16) 0%, rgba(198,161,100,0) 65%);
+}
+.hero-bg .fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(11,10,8,0.85) 0%, rgba(11,10,8,0.55) 40%, rgba(11,10,8,0.15) 70%, transparent 100%);
+}
+.hero-bg .top-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,10,8,0.9) 0%, rgba(11,10,8,0.55) 65%, transparent 100%);
+  height: 8rem;
+}
+/* Optional real hero photo — drop a file at images/hero/hero-bg.jpg and it
+   displays automatically, covering the CSS placeholder. If the file is
+   missing, onerror hides the <img> and the placeholder above shows through. */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content { position: relative; z-index: 2; max-width: 46rem; }
+.hero-content h1 { margin-top: 1.25rem; color: var(--ivory); }
+.hero-content h1 .gold { color: var(--gold); }
+.hero-content .body-lg { margin-top: 1.75rem; max-width: 34rem; }
+.hero-ctas { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+
+/* Hero property search */
+.hero-search {
+  position: relative;
+  z-index: 2;
+  margin-top: 3rem;
+  background: rgba(11, 10, 8, 0.94);
+  border: 1px solid rgba(198, 161, 100, 0.3);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(28px);
+  max-width: 64rem;
+}
+.hero-search form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 800px) {
+  .hero-search form {
+    grid-template-columns: repeat(4, 1fr) auto;
+    align-items: end;
+  }
+}
+.field label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 0.5rem;
+}
+.field select {
+  width: 100%;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory);
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius);
+}
+.field select:focus { border-color: var(--gold); }
+
+.field { position: relative; }
+.field input {
+  width: 100%;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory);
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius);
+}
+.field input:focus { border-color: var(--gold); outline: none; }
+.autocomplete-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--ink-2);
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius);
+  max-height: 14rem;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+}
+.autocomplete-list.is-open { display: block; }
+.autocomplete-item {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--ivory-dim);
+  cursor: pointer;
+}
+.autocomplete-item:hover,
+.autocomplete-item.is-active { background: rgba(198,161,100,0.12); color: var(--ivory); }
+
+/* =========================================================
+   Cards (outlined — matches approved reference)
+   ========================================================= */
+.card-outlined {
+  border: 1px solid var(--ink-3);
+  border-radius: var(--radius);
+  transition: border-color 200ms var(--ease);
+}
+.card-outlined:hover { border-color: var(--gold-dim); }
+
+/* Brighter card borders + body text for just the two sections with a
+   photographic background (home "Why Somara Realty" and About's "What we
+   hold ourselves to") — the default subtle border/dim body text reads fine
+   on plain dark backgrounds elsewhere, but is too low-contrast over these
+   photos. Scoped to these two sections only, not the global card style. */
+.why-somara-bg .card-outlined,
+.about-values-bg .card-outlined {
+  border-color: #f8c394;
+}
+.why-somara-bg .card-outlined:hover,
+.about-values-bg .card-outlined:hover {
+  border-color: #f8c394;
+}
+.why-somara-bg .card-outlined .body-sm,
+.about-values-bg .card-outlined .body-sm {
+  color: #fdfdfd;
+}
+
+/* Why Somara */
+.values-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+.value-card { padding: 2rem; }
+.value-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(198,161,100,0.5);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+/* =========================================================
+   Stats strip — animated count-up numbers (js/main.js).
+   ========================================================= */
+.stats-section {
+  padding-block: 3rem;
+  border-top: 1px solid var(--ink-3);
+  border-bottom: 1px solid var(--ink-3);
+  background: var(--ink-2);
+}
+.stats-grid {
+  display: grid;
+  gap: 2rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+@media (min-width: 700px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-item { padding: 0 1.25rem; }
+.stat-item:nth-child(2n) { border-left: 1px solid var(--ink-3); }
+.stat-item:nth-child(n+3) { border-top: 1px solid var(--ink-3); padding-top: 1.75rem; }
+@media (min-width: 700px) {
+  .stat-item:nth-child(n+3) { border-top: none; padding-top: 0; }
+  .stat-item:not(:first-child) { border-left: 1px solid var(--ink-3); }
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.5vw + 1.5rem, 2.75rem);
+  color: var(--gold);
+  line-height: 1.1;
+}
+.stat-item .body-sm { margin-top: 0.4rem; }
+
+/* =========================================================
+   Developer partnerships — continuous logo/wordmark marquee.
+   Two identical item sets back to back; translating exactly
+   -50% of the track's own width loops seamlessly.
+   ========================================================= */
+.marquee {
+  margin-top: 2rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 1.5rem;
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 11rem;
+  height: 4.5rem;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--ink-3);
+  border-radius: var(--radius);
+  background: #f7f3ec;
+  flex-shrink: 0;
+}
+.marquee-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; }
+}
+
+/* =========================================================
+   Property grid
+   ========================================================= */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.properties-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .properties-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .properties-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.property-card { overflow: hidden; cursor: pointer; background: var(--ink-2); }
+.property-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #201a13 0%, #0b0a08 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.property-media svg { width: 2.5rem; height: 2.5rem; color: var(--ink-3); }
+/* Optional real property photo — drop a file at
+   images/properties/{id}.jpg (id matches the property, e.g. p1.jpg) and
+   it displays automatically. Missing file -> onerror hides the <img>,
+   revealing the icon placeholder underneath. */
+.property-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.property-badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  background: var(--ink);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory-dim);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius);
+}
+.property-body { padding: 1.5rem; }
+.property-body h3 { color: var(--ivory); }
+.property-location {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--stone);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.property-price {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--gold);
+}
+.property-meta {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--stone);
+  border-top: 1px solid var(--ink-3);
+  padding-top: 0.9rem;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--stone);
+}
+.empty-state button { margin-top: 1rem; }
+
+/* =========================================================
+   Category pills (Browse By Category — in-page filter)
+   ========================================================= */
+.category-pills {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.pill {
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(198,161,100,0.35);
+  background: transparent;
+  color: var(--ivory-dim);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color 200ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
+}
+.pill:hover { border-color: var(--gold); color: var(--ivory); }
+.pill.is-active { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+/* View More (progressive reveal — Featured Properties) */
+.view-more-wrap { margin-top: 2.5rem; text-align: center; }
+
+/* =========================================================
+   Featured Realtors
+   ========================================================= */
+.realtor-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .realtor-grid { grid-template-columns: repeat(3, 1fr); } }
+/* Variant for grids with fewer than 3 cards (e.g. the About page's
+   2-person leadership team) so they sit centered instead of left-aligned
+   against an empty third column. */
+.realtor-grid--pair { max-width: 42rem; margin-left: auto; margin-right: auto; }
+@media (min-width: 700px) { .realtor-grid--pair { grid-template-columns: repeat(2, 1fr); } }
+.realtor-card { padding: 2rem; text-align: center; }
+.realtor-avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(198,161,100,0.5);
+  background: var(--ink);
+  color: var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.realtor-avatar svg { width: 2.25rem; height: 2.25rem; }
+.realtor-role { margin-top: 0.35rem; color: var(--gold); }
+.realtor-focus { margin-top: 0.35rem; }
+.realtor-whatsapp { margin-top: 1.5rem; }
+
+/* =========================================================
+   Property modal
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(11, 10, 8, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal-overlay.is-open { display: flex; }
+.modal {
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  max-width: 42rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+}
+.modal-media {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #201a13 0%, #0b0a08 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.modal-media svg { width: 3rem; height: 3rem; color: var(--ink-3); }
+.modal-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-body { padding: 2rem; }
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--ink);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+}
+.modal-inner { position: relative; }
+.modal-amenities { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.modal-amenities span {
+  font-size: 0.75rem;
+  border: 1px solid var(--ink-3);
+  color: var(--ivory-dim);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius);
+}
+.modal-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* =========================================================
+   Lead modal ("Ask About This Property" popup)
+   Image on one side, enquiry form on the other — placeholder
+   submit handler in js/main.js, to be wired to Lead Rat CRM.
+   ========================================================= */
+.lead-modal { max-width: 40rem; }
+.lead-modal-inner { position: relative; display: grid; grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+@media (min-width: 720px) { .lead-modal-inner { grid-template-columns: 0.8fr 1fr; max-height: none; overflow-y: visible; } }
+.lead-modal-media {
+  position: relative;
+  min-height: 7rem;
+  background: linear-gradient(135deg, #201a13 0%, #0b0a08 100%);
+  overflow: hidden;
+}
+@media (min-width: 720px) { .lead-modal-media { min-height: 100%; } }
+/* Explicit z-index stack so a loaded photo always covers the fallback
+   icon, regardless of DOM order: icon (1) < photo (2) < caption (3). */
+.lead-modal-media > svg { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 3rem; height: 3rem; color: var(--ink-3); z-index: 1; }
+.lead-modal-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+.lead-modal-media-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 1.25rem;
+  background: linear-gradient(0deg, rgba(11,10,8,0.92) 0%, rgba(11,10,8,0) 100%);
+}
+/* Status badge inside the caption strip — same look as .property-badge,
+   but laid out inline (not absolutely corner-pinned) so it stacks
+   cleanly above the title/location instead of overlapping them. */
+.lead-modal-badge {
+  display: inline-block;
+  background: var(--ink);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory-dim);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius);
+}
+.lead-modal-form { padding: 1.25rem; }
+.lead-modal-form .form-grid { gap: 0.7rem; }
+@media (min-width: 480px) { .lead-modal-form { padding: 1.5rem; } }
+/* Compact field styling scoped to the lead/consultation popup only, so
+   the standalone Contact page form keeps its normal, roomier sizing. */
+.lead-modal-form .field-full label { margin-bottom: 0.3rem; font-size: 0.65rem; }
+.lead-modal-form .field-full input,
+.lead-modal-form .field-full select,
+.lead-modal-form .field-full textarea { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+.lead-modal-form .field-full textarea { min-height: 4rem; }
+.lead-modal-form h2 { font-size: 1.3rem; }
+.lead-modal-form > p { font-size: 0.85rem; }
+
+/* =========================================================
+   Instagram-style strip
+   ========================================================= */
+.insta-scroll {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim) var(--ink-2);
+}
+.insta-scroll::-webkit-scrollbar { height: 6px; }
+.insta-scroll::-webkit-scrollbar-track { background: var(--ink-2); }
+.insta-scroll::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 999px; }
+.insta-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 11.5rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--ink-3);
+  background: linear-gradient(160deg, #201a13, #0b0a08);
+  scroll-snap-align: start;
+}
+.insta-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.insta-item .insta-icon {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: rgba(11,10,8,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* =========================================================
+   Get In Touch section — blurred background photo for depth,
+   with a dark gradient over it so the form stays readable.
+   ========================================================= */
+.get-in-touch-bg { position: relative; overflow: hidden; }
+.get-in-touch-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("/images/hero/dubai_december-12-2025_12374.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.65);
+  z-index: 0;
+}
+.get-in-touch-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(11,10,8,0.45) 45%, var(--ink) 100%);
+  z-index: 0;
+}
+.get-in-touch-bg > .container { position: relative; z-index: 1; }
+
+.why-somara-bg { position: relative; overflow: hidden; }
+.why-somara-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("/images/properties/worlds-tallest-skyscrapers-moss-and-fog-burj-khalifa-1536x864.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px) brightness(0.5) saturate(1);
+  z-index: 0;
+}
+.why-somara-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(11,10,8,0.55) 40%, rgba(11,10,8,0.55) 60%, var(--ink) 100%);
+  z-index: 0;
+}
+.why-somara-bg > .container { position: relative; z-index: 1; }
+
+/* =========================================================
+   About / Contact page background sections
+   ========================================================= */
+.about-hero-bg { position: relative; overflow: hidden; }
+.about-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("/images/properties/dubai-marina-1560x10002.avif");
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px) brightness(0.5) saturate(1);
+  z-index: 0;
+}
+.about-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(11,10,8,0.35) 50%, var(--ink) 100%);
+  z-index: 0;
+}
+.about-hero-bg > .container { position: relative; z-index: 1; }
+
+.about-values-bg { position: relative; overflow: hidden; }
+.about-values-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("/images/properties/palm-jumeirah-media-3-dtcm.avif");
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px) brightness(0.48) saturate(1);
+  z-index: 0;
+}
+.about-values-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ink-2) 0%, rgba(21,18,16,0.6) 40%, rgba(21,18,16,0.6) 60%, var(--ink-2) 100%);
+  z-index: 0;
+}
+.about-values-bg > .container { position: relative; z-index: 1; }
+
+.contact-hero-bg { position: relative; overflow: hidden; }
+.contact-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("/images/properties/dubai-neighborhood-business-bay.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px) brightness(0.5) saturate(1);
+  z-index: 0;
+}
+.contact-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(11,10,8,0.35) 50%, var(--ink) 100%);
+  z-index: 0;
+}
+.contact-hero-bg > .container { position: relative; z-index: 1; }
+
+/* =========================================================
+   Consultation CTA
+   ========================================================= */
+.consultation {
+  background: var(--ink-2);
+  border-top: 1px solid var(--ink-3);
+  border-bottom: 1px solid var(--ink-3);
+}
+.consultation .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 3.5rem;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer { border-top: 1px solid var(--ink-3); }
+.footer-top {
+  padding-block: 4rem;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .footer-top { grid-template-columns: 1.2fr 2fr; align-items: start; } }
+.footer-links-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 560px) { .footer-links-grid { grid-template-columns: repeat(3, 1fr); } }
+.footer-top h2 { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+.footer-top ul { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-top ul a { font-size: 0.875rem; color: var(--ivory-dim); }
+.footer-top ul a:hover { color: var(--gold); }
+.footer-contact-bar {
+  border-top: 1px solid var(--ink-3);
+  padding-block: 2rem;
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .footer-contact-bar { grid-template-columns: repeat(3, 1fr); } }
+.footer-contact-item { display: flex; align-items: center; gap: 1rem; }
+.footer-contact-icon {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(198,161,100,0.4);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-contact-item h3 { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+.footer-contact-item p, .footer-contact-item a { margin-top: 0.2rem; font-size: 0.9375rem; color: var(--ivory); }
+.footer-contact-item a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid var(--ink-3);
+  padding-block: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--stone);
+  font-size: 0.875rem;
+}
+
+/* =========================================================
+   Inner page hero (About / Contact)
+   ========================================================= */
+.page-hero { padding-top: 10rem; padding-bottom: 4rem; border-bottom: 1px solid var(--ink-3); }
+.page-hero .eyebrow { display: block; margin-bottom: 1.25rem; }
+.page-hero p.body-lg { margin-top: 1.5rem; max-width: 42rem; }
+
+.map-placeholder {
+  margin-top: 1.5rem;
+  height: 16rem;
+  max-width: 40rem;
+  border: 1px dashed var(--ink-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 1rem;
+}
+.map-placeholder.has-map {
+  border-style: solid;
+  padding: 0;
+  overflow: hidden;
+}
+
+.contact-grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .contact-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.contact-cta-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 800px) { .contact-cta-grid { grid-template-columns: 1.1fr 1fr; } }
+
+/* Contact / consultation form */
+.form-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .form-grid.two-col { grid-template-columns: 1fr 1fr; } }
+.field-full { display: block; }
+.field-full label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 0.5rem;
+}
+.field-full input,
+.field-full select,
+.field-full textarea {
+  width: 100%;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  color: var(--ivory);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+}
+.field-full input:focus,
+.field-full select:focus,
+.field-full textarea:focus { border-color: var(--gold); }
+.field-full textarea { resize: vertical; min-height: 7rem; }
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  display: none;
+}
+.form-status.is-visible { display: block; }
+.form-status.success { background: rgba(111,143,106,0.12); color: var(--success); border: 1px solid rgba(111,143,106,0.3); }
+.form-status.error { background: rgba(179,84,63,0.12); color: var(--error); border: 1px solid rgba(179,84,63,0.3); }
+
+/* Values page grid (About) */
+.about-values {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .about-values { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .about-values { grid-template-columns: repeat(3, 1fr); } }
+.about-values .card-outlined { padding: 1.75rem; }
+
+@media (max-width: 700px) {
+  .responsive-2col { grid-template-columns: 1fr !important; }
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #25d366;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  z-index: 50;
+  transition: transform 200ms ease;
+}
+.whatsapp-float:hover { transform: scale(1.08); }
+.whatsapp-float.is-visible { display: flex; }

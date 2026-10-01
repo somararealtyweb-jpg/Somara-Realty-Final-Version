@@ -1,0 +1,111 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/properties"
+public_folder: "/images/properties"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - file: "content/hero.json"
+        label: "Homepage Hero"
+        name: "hero"
+        fields:
+          - {label: "Headline — line 1", name: "heroLine1", widget: "string", required: false, hint: "Leave blank to keep the current text"}
+          - {label: "Headline — line 2 (shown in gold)", name: "heroLine2", widget: "string", required: false}
+          - {label: "Subtext", name: "heroSubtext", widget: "text", required: false}
+          - {label: "Background photo", name: "heroImage", widget: "image", required: false, media_folder: "/images/hero", public_folder: "/images/hero"}
+          - {label: "Background video (overrides photo — MP4, under ~10MB)", name: "heroVideo", widget: "file", required: false, media_folder: "/images/hero", public_folder: "/images/hero"}
+
+      - file: "content/contact-info.json"
+        label: "Contact Info"
+        name: "contact"
+        fields:
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "Phone", name: "phone", widget: "string", required: false}
+          - {label: "WhatsApp number (digits with country code, e.g. 971501234567 — no + or spaces)", name: "whatsapp", widget: "string", required: false}
+          - {label: "Address line 1", name: "addressLine1", widget: "string", required: false}
+          - {label: "Address line 2", name: "addressLine2", widget: "string", required: false}
+          - {label: "City", name: "city", widget: "string", required: false}
+          - {label: "Country", name: "country", widget: "string", required: false}
+          - label: "Google Maps embed URL"
+            name: "mapEmbedUrl"
+            widget: "string"
+            required: false
+            hint: "In Google Maps: search your address → Share → the 'Embed a map' tab (not 'Copy link') → copy ONLY the URL inside src=\"...\" and paste it here"
+          - {label: "Instagram URL", name: "instagramUrl", widget: "string", required: false}
+
+      - file: "content/about-content.json"
+        label: "About Page"
+        name: "about"
+        fields:
+          - {label: "Quote heading", name: "quoteHeading", widget: "text", required: false, hint: "The big quote at the top of the About page"}
+          - {label: "Story paragraph", name: "storyParagraph", widget: "text", required: false}
+          - {label: "Our promise", name: "promiseText", widget: "string", required: false}
+          - {label: "How we work", name: "howWeWorkText", widget: "text", required: false}
+          - label: "Core values"
+            name: "values"
+            widget: "list"
+            required: false
+            hint: "Leave empty to keep the current 5 values. Adding any entry here replaces all of them."
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "string"}
+
+      - file: "content/categories.json"
+        label: "Browse-by-Category Tiles"
+        name: "categories"
+        fields:
+          - {label: "Buy — title", name: "buyTitle", widget: "string", required: false}
+          - {label: "Buy — description", name: "buyDescription", widget: "text", required: false}
+          - {label: "Rent — title", name: "rentTitle", widget: "string", required: false}
+          - {label: "Rent — description", name: "rentDescription", widget: "text", required: false}
+          - {label: "Off-Plan — title", name: "offPlanTitle", widget: "string", required: false}
+          - {label: "Off-Plan — description", name: "offPlanDescription", widget: "text", required: false}
+
+  - name: "properties"
+    label: "Properties"
+    files:
+      - file: "content/properties.json"
+        label: "Property Listings"
+        name: "properties"
+        fields:
+          - label: "Listings"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.location}}"
+            fields:
+              - {label: "ID (unique, e.g. p7 — never reuse one)", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Category (controls the Buy/Rent/Off-Plan browse page)"
+                name: "category"
+                widget: "select"
+                options: ["Buy", "Rent", "Off-Plan"]
+              - label: "Location"
+                name: "location"
+                widget: "select"
+                options: ["Downtown Dubai", "Dubai Marina", "Dubai Hills Estate", "Business Bay", "Palm Jumeirah", "Arabian Ranches"]
+              - {label: "Price (AED, numbers only)", name: "price", widget: "number", value_type: "int"}
+              - label: "Property Type"
+                name: "type"
+                widget: "select"
+                options: ["Apartment", "Villa", "Townhouse", "Penthouse"]
+              - {label: "Bedrooms", name: "bedrooms", widget: "number", value_type: "int"}
+              - {label: "Bathrooms", name: "bathrooms", widget: "number", value_type: "int"}
+              - {label: "Area (sq ft)", name: "area", widget: "number", value_type: "int"}
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["Ready", "Off-Plan"]
+              - label: "Budget Bracket (controls the homepage search filter)"
+                name: "budgetTier"
+                widget: "select"
+                options:
+                  - {label: "AED 1M – 5M", value: "1-5"}
+                  - {label: "AED 5M – 10M", value: "5-10"}
+                  - {label: "AED 10M+", value: "10+"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Amenities (one per line)", name: "amenities", widget: "list"}
+              - {label: "Photo", name: "image", widget: "image", required: false}
