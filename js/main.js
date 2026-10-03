@@ -331,14 +331,30 @@
       .then(function (data) {
         if (!data || !data.ok || !data.reels || !data.reels.length) return;
 
-        scroll.innerHTML = data.reels.map(function (reel) {
+              scroll.innerHTML = data.reels.map(function (reel) {
           return (
-            '<a class="insta-item" href="' + reel.permalink + '" target="_blank" rel="noopener noreferrer">' +
-              '<img src="' + reel.thumbnail + '" alt="" loading="lazy" />' +
+            '<a class="insta-item is-reel" href="' + reel.permalink + '" target="_blank" rel="noopener noreferrer">' +
+              '<video src="' + reel.video + '" poster="' + reel.thumbnail + '" muted loop playsinline preload="metadata"></video>' +
               '<span class="insta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></span>' +
             '</a>'
           );
         }).join("");
+
+        var videos = scroll.querySelectorAll("video");
+        if ("IntersectionObserver" in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.play().catch(function () {});
+              } else {
+                entry.target.pause();
+              }
+            });
+          }, { root: scroll, threshold: 0.6 });
+          videos.forEach(function (v) { observer.observe(v); });
+        } else {
+          videos.forEach(function (v) { v.play().catch(function () {}); });
+        }
 
         var caption = document.getElementById("instaCaption");
         if (caption) caption.textContent = "Our best-performing reels, updated automatically from Instagram.";
