@@ -214,10 +214,26 @@
         if (s.heroLine2 && line2) line2.textContent = s.heroLine2;
         if (s.heroSubtext && subtext) subtext.textContent = s.heroSubtext;
 
+        // Video first if one's set, with the image as a silent fallback:
+        // if the video 404s, is an unsupported format, or simply fails to
+        // play (slow connection, browser policy, etc.), we swap back to
+        // the still image rather than leaving a blank/black hero.
         if (s.heroVideo && video) {
+          var fallToImage = function () {
+            video.style.display = "none";
+            if (s.heroImage && photo) {
+              photo.src = s.heroImage;
+              photo.style.display = "block";
+            }
+          };
+          video.addEventListener("error", fallToImage);
           video.src = s.heroVideo;
           video.style.display = "block";
           if (photo) photo.style.display = "none";
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(fallToImage);
+          }
         } else if (s.heroImage && photo) {
           photo.src = s.heroImage;
           photo.style.display = "block";
@@ -265,8 +281,8 @@
   if (floatWa) { floatWa.href = waUrl; floatWa.classList.add("is-visible"); }
 }
 
-        if (c.instagramUrl) {
-          ["footerInstagram", "ctaInstagram"].forEach(function (id) {
+              if (c.instagramUrl) {
+          ["footerInstagram", "ctaInstagram", "instaFollowLink"].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) { el.href = c.instagramUrl; el.style.display = ""; }
           });
@@ -298,7 +314,39 @@
         console.error(err);
       });
   }
+  /* -----------------------------------------------------
+     Instagram reels — homepage "Follow The Journey" section.
+     Calls our Netlify Function (which talks to the Instagram Graph
+     API server-side, token never touches the browser) and swaps in
+     the real reels, best-performing first. If the function isn't
+     configured yet, or the call fails for any reason, we simply
+     leave the placeholder images already in the HTML untouched.
+  ----------------------------------------------------- */
+  function loadInstagramReels() {
+    var scroll = document.getElementById("instaScroll");
+    if (!scroll) return;
 
+    fetch("/.netlify/functions/instagram-reels")
+      .then(function (res) { return res.json().catch(function () { return {}; }); })
+      .then(function (data) {
+        if (!data || !data.ok || !data.reels || !data.reels.length) return;
+
+        scroll.innerHTML = data.reels.map(function (reel) {
+          return (
+            '<a class="insta-item" href="' + reel.permalink + '" target="_blank" rel="noopener noreferrer">' +
+              '<img src="' + reel.thumbnail + '" alt="" loading="lazy" />' +
+              '<span class="insta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></span>' +
+            '</a>'
+          );
+        }).join("");
+
+        var caption = document.getElementById("instaCaption");
+        if (caption) caption.textContent = "Our best-performing reels, updated automatically from Instagram.";
+      })
+      .catch(function (err) {
+        console.error("loadInstagramReels failed", err);
+      });
+  }
   /* -----------------------------------------------------
      About page content — only relevant on about.html.
      Same progressive-enhancement rule: blank/missing fields
@@ -1270,7 +1318,10 @@ function initLocationAutocomplete() {
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    renderRealtors();
+        renderRealtors();
+    loadInstagramReels();
+
+    // Only the property grid depends on the fetched data — everything
 
     // Only the property grid depends on the fetched data — everything
     // else above is ready immediately.
