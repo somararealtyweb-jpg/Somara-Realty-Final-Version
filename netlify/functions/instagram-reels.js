@@ -55,14 +55,7 @@ exports.handler = async function () {
       console.error("instagram-reels: Graph API error", data);
       return {
         statusCode: 502,
-        body: JSON.stringify({
-          ok: false,
-          error: (data && data.error && data.error.message) || "Instagram API error.",
-          debugTokenLength: token.length,
-          debugTokenStart: token.slice(0, 6),
-          debugTokenEnd: token.slice(-6),
-          debugUserId: userId
-        })
+        body: JSON.stringify({ ok: false, error: (data && data.error && data.error.message) || "Instagram API error." })
       };
     }
 
