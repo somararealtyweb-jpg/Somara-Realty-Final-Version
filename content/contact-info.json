@@ -2,10 +2,10 @@
   "email": "",
   "phone": "+971 55 717 0525",
   "whatsapp": "971557170525",
-  "addressLine1": "",
-  "addressLine2": "",
-  "city": "",
-  "country": "",
-  "mapEmbedUrl": "https://www.google.com/maps?q=Somara+Realty,25.1881895,55.2713409&z=17&output=embed",
+  "addressLine1": "Al Manara Tower",
+  "addressLine2": "Business Bay",
+  "city": "Dubai",
+  "country": "United Arab Emirates",
+  "mapEmbedUrl": "https://www.google.com/maps?q=25.1881895,55.2713409&z=16&output=embed",
   "instagramUrl": ""
 }
