@@ -1,21 +1,22 @@
-// Fetches the connected Instagram Business account's Reels via the
-// official Meta Graph API and returns them sorted best-performing first,
-// so the homepage "Follow The Journey" section always leads with the
-// reel getting the most engagement.
+// Fetches the connected Instagram account's Reels via Instagram's own
+// Graph API (the newer direct-to-Instagram login flow -- tokens that
+// start with "IGAA") and returns them sorted best-performing first, so
+// the homepage "Follow The Journey" section always leads with the reel
+// getting the most engagement.
 //
 // Required environment variables (Netlify: Site configuration ->
 // Environment variables):
-//   INSTAGRAM_ACCESS_TOKEN   long-lived Graph API access token for the
-//                             Instagram Business/Creator account.
-//   INSTAGRAM_USER_ID        that account's numeric Instagram Business
-//                             Account ID (not the @username).
+//   INSTAGRAM_ACCESS_TOKEN   the long-lived token (starts "IGAA...").
+//   INSTAGRAM_USER_ID        that account's numeric Instagram user ID
+//                             (not the @username) -- from graph.instagram.com/me.
 //
-// NOTE: long-lived Graph API tokens expire roughly every 60 days and
-// need to be refreshed/regenerated and re-saved here, or this will
-// start failing (the frontend falls back to the placeholder images
-// when that happens, so the section never breaks -- it just stops
-// updating until the token is refreshed).
+// NOTE: long-lived tokens expire roughly every 60 days and need to be
+// refreshed/regenerated and re-saved here, or this will start failing
+// (the frontend falls back to the placeholder images when that happens,
+// so the section never breaks -- it just stops updating until the
+// token is refreshed).
 
+const GRAPH_HOST = "https://graph.instagram.com";
 const GRAPH_VERSION = "v21.0";
 
 exports.handler = async function () {
@@ -43,7 +44,7 @@ exports.handler = async function () {
   ].join(",");
 
   const url =
-    "https://graph.facebook.com/" + GRAPH_VERSION + "/" + userId + "/media" +
+    GRAPH_HOST + "/" + GRAPH_VERSION + "/" + userId + "/media" +
     "?fields=" + fields + "&limit=50&access_token=" + token;
 
   try {
@@ -54,7 +55,14 @@ exports.handler = async function () {
       console.error("instagram-reels: Graph API error", data);
       return {
         statusCode: 502,
-        body: JSON.stringify({ ok: false, error: (data && data.error && data.error.message) || "Instagram API error." })
+        body: JSON.stringify({
+          ok: false,
+          error: (data && data.error && data.error.message) || "Instagram API error.",
+          debugTokenLength: token.length,
+          debugTokenStart: token.slice(0, 6),
+          debugTokenEnd: token.slice(-6),
+          debugUserId: userId
+        })
       };
     }
 
