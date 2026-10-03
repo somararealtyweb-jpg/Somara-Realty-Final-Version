@@ -45,7 +45,7 @@ exports.handler = async function () {
 
   const url =
     GRAPH_HOST + "/" + GRAPH_VERSION + "/" + userId + "/media" +
-    "?fields=" + fields + "&limit=50&access_token=" + token;
+    "?fields=" + fields + "&limit=100&access_token=" + token;
 
   try {
     const res = await fetch(url);
@@ -71,11 +71,12 @@ exports.handler = async function () {
       return scoreB - scoreA;
     });
 
-    const top = reels.slice(0, 6).map(function (item) {
+    const top = reels.slice(0, 10).map(function (item) {
       return {
         id: item.id,
         caption: item.caption || "",
         permalink: item.permalink,
+        video: item.media_url,
         thumbnail: item.thumbnail_url || item.media_url,
         likeCount: item.like_count || 0,
         commentCount: item.comments_count || 0
