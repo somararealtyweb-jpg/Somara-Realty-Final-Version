@@ -999,7 +999,8 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
   color: var(--stone);
   font-size: 0.875rem;
 }
-
+.footer-credit a { color: var(--gold-dim); text-decoration: none; }
+.footer-credit a:hover { color: var(--gold); text-decoration: underline; }
 /* =========================================================
    Inner page hero (About / Contact)
    ========================================================= */
