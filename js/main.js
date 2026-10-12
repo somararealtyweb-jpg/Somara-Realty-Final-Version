@@ -342,7 +342,8 @@
       .then(function (data) {
         if (!data || !data.ok || !data.reels || !data.reels.length) return;
 
-              scroll.innerHTML = data.reels.map(function (reel) {
+        scroll.classList.add("has-reels");
+        scroll.innerHTML = data.reels.slice(0, 5).map(function (reel) {
           return (
             '<a class="insta-item is-reel" href="' + reel.permalink + '" target="_blank" rel="noopener noreferrer">' +
               '<video src="' + reel.video + '" poster="' + reel.thumbnail + '" muted loop playsinline preload="metadata"></video>' +
