@@ -75,37 +75,23 @@ collections:
           - label: "Listings"
             name: "items"
             widget: "list"
-            summary: "{{fields.title}} — {{fields.location}}"
+            summary: "{{fields.title}} — {{fields.developer}} — {{fields.location}}"
             fields:
-              - {label: "ID (unique, e.g. p7 — never reuse one)", name: "id", widget: "string"}
-              - {label: "Title", name: "title", widget: "string"}
-              - label: "Category (controls the Buy/Rent/Off-Plan browse page)"
-                name: "category"
-                widget: "select"
-                options: ["Buy", "Rent", "Off-Plan"]
-              - label: "Location"
-                name: "location"
-                widget: "select"
-                options: ["Downtown Dubai", "Dubai Marina", "Dubai Hills Estate", "Business Bay", "Palm Jumeirah", "Arabian Ranches"]
-              - {label: "Price (AED, numbers only)", name: "price", widget: "number", value_type: "int"}
-              - label: "Property Type"
-                name: "type"
-                widget: "select"
-                options: ["Apartment", "Villa", "Townhouse", "Penthouse"]
-              - {label: "Bedrooms", name: "bedrooms", widget: "number", value_type: "int"}
-              - {label: "Bathrooms", name: "bathrooms", widget: "number", value_type: "int"}
-              - {label: "Area (sq ft)", name: "area", widget: "number", value_type: "int"}
-              - label: "Status"
+              - {label: "ID (unique, e.g. p81 — never reuse one)", name: "id", widget: "string"}
+              - {label: "Project name", name: "title", widget: "string"}
+              - {label: "Developer (type it exactly as in the other listings, e.g. DAMAC)", name: "developer", widget: "string"}
+              - {label: "Location", name: "location", widget: "string"}
+              - label: "Status (Ready = handover up to Q3 2026, Off-Plan = Q4 2026 onwards)"
                 name: "status"
                 widget: "select"
-                options: ["Ready", "Off-Plan"]
-              - label: "Budget Bracket (controls the homepage search filter)"
-                name: "budgetTier"
-                widget: "select"
                 options:
-                  - {label: "AED 1M – 5M", value: "1-5"}
-                  - {label: "AED 5M – 10M", value: "5-10"}
-                  - {label: "AED 10M+", value: "10+"}
+                  - {label: "Ready to Move In", value: "Ready"}
+                  - {label: "Off-Plan", value: "Off-Plan"}
+              - {label: "Handover (e.g. Q4 2027)", name: "handover", widget: "string"}
+              - {label: "Unit types (e.g. Studio – 3 BR) — optional", name: "unitTypes", widget: "string", required: false}
+              - {label: "Starting price (AED, numbers only)", name: "price", widget: "number", value_type: "int"}
+              - {label: "Payment plan (e.g. 60/40%) — leave blank if not listed", name: "paymentPlan", widget: "string", required: false}
+              - {label: "Tag (e.g. Resale) — optional", name: "tag", widget: "string", required: false}
               - {label: "Description", name: "description", widget: "text"}
-              - {label: "Amenities (one per line)", name: "amenities", widget: "list"}
-              - {label: "Photo", name: "image", widget: "image", required: false}
+              - {label: "Amenities (one per line) — optional", name: "amenities", widget: "list", required: false}
+              - {label: "Photo (optional — the developer logo shows if left empty)", name: "image", widget: "image", required: false}
