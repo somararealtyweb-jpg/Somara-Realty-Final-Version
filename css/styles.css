@@ -239,12 +239,15 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
    ========================================================= */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: min(100svh, 52rem);
   display: grid;
   align-items: center;
- 
   background: var(--ink);
-  padding-top: 6rem;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 1800px) {
+  .hero { min-height: min(100svh, 58rem); }
 }
 .hero > .container {
   width: 100%;
