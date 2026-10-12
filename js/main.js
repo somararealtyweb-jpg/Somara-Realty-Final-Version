@@ -799,6 +799,7 @@ function initLocationAutocomplete() {
           .json()
           .catch(function () { return {}; })
           .then(function (body) {
+                         if (res.ok && window.fbq) window.fbq("track", "Lead");
             return { ok: res.ok, error: (body && body.error) || "" };
           });
       })
