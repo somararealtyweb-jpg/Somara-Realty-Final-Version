@@ -369,7 +369,7 @@
         }
 
         var caption = document.getElementById("instaCaption");
-        if (caption) caption.textContent = "Our best-performing reels, updated automatically from Instagram.";
+        if (caption) caption.textContent = "Our top reels. Catch the rest on Instagram.";
       })
       .catch(function (err) {
         console.error("loadInstagramReels failed", err);
