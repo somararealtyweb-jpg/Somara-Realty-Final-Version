@@ -4,7 +4,15 @@
    ========================================================= */
 (function () {
   "use strict";
-   var META_PIXEL_ID = "1431263938956140";
+
+  /* -----------------------------------------------------
+     Meta (Facebook) Pixel. Paste the numeric Pixel ID between
+     the quotes below (Meta Events Manager -> Data sources ->
+     your Pixel -> the number under the Pixel name). While it is
+     empty nothing loads, so the site is unaffected. This file
+     is on every page, so the pixel tracks every page view.
+  ----------------------------------------------------- */
+  var META_PIXEL_ID = "1431263938956140";
 
   (function initMetaPixel() {
     if (!META_PIXEL_ID) return;
@@ -16,6 +24,7 @@
     window.fbq("init", META_PIXEL_ID);
     window.fbq("track", "PageView");
   })();
+
   /* -----------------------------------------------------
      Header: transparent only at the very top of the page.
      Solid as soon as any scrolling happens — same behavior
@@ -128,7 +137,53 @@
     "Off-Plan": "off-plan",
     "Ready": "ready to move in"
   };
-var browseApi = {};
+
+  var browseApi = {};
+
+  /* Browse grid (#categoryGrid) with progressive reveal: shows 6, then
+     6 more per "View More" click. Used by the Off-Plan / Ready pills and
+     by search results. The button is created here, no HTML needed. */
+  var browseState = { list: [], visible: 6, step: 6 };
+
+  function drawBrowseGrid() {
+    var grid = document.getElementById("categoryGrid");
+    if (!grid) return;
+    grid.innerHTML = browseState.list.slice(0, browseState.visible).map(propertyCardHTML).join("");
+    grid.querySelectorAll(".property-card").forEach(function (card) {
+      card.addEventListener("click", function () { openModal(card.getAttribute("data-id")); });
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.getAttribute("data-id")); }
+      });
+    });
+    var wrap = document.getElementById("browseViewMoreWrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "view-more-wrap";
+      wrap.id = "browseViewMoreWrap";
+      wrap.innerHTML = '<button type="button" class="btn btn-outline" id="browseViewMoreBtn">View More</button>';
+      grid.parentNode.insertBefore(wrap, grid.nextSibling);
+      wrap.querySelector("button").addEventListener("click", function () {
+        browseState.visible += browseState.step;
+        drawBrowseGrid();
+      });
+    }
+    wrap.style.display = browseState.visible < browseState.list.length ? "" : "none";
+  }
+
+  function renderBrowseGrid(list, emptyHTML) {
+    var grid = document.getElementById("categoryGrid");
+    if (!grid) return;
+    browseState.list = list;
+    browseState.visible = 6;
+    if (list.length === 0) {
+      grid.innerHTML = emptyHTML;
+      var w = document.getElementById("browseViewMoreWrap");
+      if (w) w.style.display = "none";
+      return;
+    }
+    drawBrowseGrid();
+  }
+
   function initCategoryPills() {
     var pills = document.querySelectorAll(".category-pills .pill");
     var grid = document.getElementById("categoryGrid");
@@ -140,17 +195,10 @@ var browseApi = {};
 
     function renderCategory(cat) {
       var filtered = PROPERTIES.filter(function (p) { return p.status === cat; });
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty-state"><p>No ' + (CATEGORY_LABELS[cat] || cat.toLowerCase()) + ' listings yet, check back soon.</p></div>';
-      } else {
-        grid.innerHTML = filtered.map(propertyCardHTML).join("");
-        grid.querySelectorAll(".property-card").forEach(function (card) {
-          card.addEventListener("click", function () { openModal(card.getAttribute("data-id")); });
-          card.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.getAttribute("data-id")); }
-          });
-        });
-      }
+      renderBrowseGrid(
+        filtered,
+        '<div class="empty-state"><p>No ' + (CATEGORY_LABELS[cat] || cat.toLowerCase()) + ' listings yet, check back soon.</p></div>'
+      );
       if (desc) desc.textContent = CATEGORY_DESCRIPTIONS[cat] || "";
       pills.forEach(function (p) {
         var isActive = p.getAttribute("data-category") === cat;
@@ -158,7 +206,9 @@ var browseApi = {};
         p.setAttribute("aria-selected", isActive ? "true" : "false");
       });
     }
-browseApi.renderCategory = renderCategory;
+
+    browseApi.renderCategory = renderCategory;
+
     // Handles /#off-plan, /#ready-to-move-in links (header nav, footer, and
     // any other page linking in) — these hashes have no matching element
     // id, so the browser won't auto-scroll; this does it manually and also
@@ -292,7 +342,7 @@ browseApi.renderCategory = renderCategory;
   if (floatWa) { floatWa.href = waUrl; floatWa.classList.add("is-visible"); }
 }
 
-              if (c.instagramUrl) {
+        if (c.instagramUrl) {
           ["footerInstagram", "ctaInstagram", "instaFollowLink"].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) { el.href = c.instagramUrl; el.style.display = ""; }
@@ -325,6 +375,7 @@ browseApi.renderCategory = renderCategory;
         console.error(err);
       });
   }
+
   /* -----------------------------------------------------
      Instagram reels — homepage "Follow The Journey" section.
      Calls our Netlify Function (which talks to the Instagram Graph
@@ -352,6 +403,9 @@ browseApi.renderCategory = renderCategory;
           );
         }).join("");
 
+        // Autoplay each reel only while it's actually scrolled into view --
+        // feels alive as you scroll the strip, and doesn't play 10 videos
+        // at once in the background.
         var videos = scroll.querySelectorAll("video");
         if ("IntersectionObserver" in window) {
           var observer = new IntersectionObserver(function (entries) {
@@ -373,8 +427,10 @@ browseApi.renderCategory = renderCategory;
       })
       .catch(function (err) {
         console.error("loadInstagramReels failed", err);
+        // Placeholder strip already on screen — nothing further to do.
       });
   }
+
   /* -----------------------------------------------------
      About page content — only relevant on about.html.
      Same progressive-enhancement rule: blank/missing fields
@@ -525,38 +581,61 @@ browseApi.renderCategory = renderCategory;
     maximumFractionDigits: 0,
   });
 
+  /* Developer logos shown on the property cards (no photos yet).
+     To add a developer: drop the logo in images/developers/ and add a
+     line here. If a listing has its own "image", that is shown instead. */
+  var DEVELOPER_LOGOS = {
+    "Azizi": "/images/developers/azizi.png",
+    "Binghatti": "/images/developers/binghatti.webp",
+    "DAMAC": "/images/developers/damac.png",
+    "Danube": "/images/developers/danube.png",
+    "Ellington": "/images/developers/ellington.png",
+    "Emaar": "/images/developers/emaar.png",
+    "Nakheel": "/images/developers/nakheel.webp",
+    "Omniyat": "/images/developers/omniyat.png",
+    "Select Group": "/images/developers/select-group.png",
+    "Sobha": "/images/developers/sobha.png"
+  };
+  var STATUS_LABELS = { "Ready": "Ready to Move In", "Off-Plan": "Off-Plan" };
+
+  function statusLabel(s) { return STATUS_LABELS[s] || s; }
+  function esc(v) {
+    return String(v == null ? "" : v)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function hasLogo(p) { return !p.image && !!DEVELOPER_LOGOS[p.developer]; }
+  function propertyMediaHTML(p) {
+    if (p.image) return '<img src="' + esc(p.image) + '" alt="" onerror="this.style.display=\'none\'" />';
+    if (hasLogo(p)) {
+      return '<img class="dev-logo" src="' + DEVELOPER_LOGOS[p.developer] + '" alt="' + esc(p.developer) + ' logo" ' +
+        'onerror="this.style.display=\'none\';this.parentNode.classList.remove(\'has-logo\')" />';
+    }
+    return "";
+  }
+
   function propertyCardHTML(p) {
+    var meta = [];
+    if (p.unitTypes) meta.push("<span>" + esc(p.unitTypes) + "</span>");
+    if (p.handover) meta.push("<span>Handover " + esc(p.handover) + "</span>");
+    if (p.paymentPlan) meta.push("<span>Plan " + esc(p.paymentPlan) + "</span>");
+    if (p.bedrooms) meta.push("<span>" + esc(p.bedrooms) + " bed</span>");
+    if (p.bathrooms) meta.push("<span>" + esc(p.bathrooms) + " bath</span>");
+    if (p.area) meta.push("<span>" + Number(p.area).toLocaleString() + " sq ft</span>");
     return (
-      '<article class="card-outlined property-card" data-id="' +
-      p.id +
-      '" tabindex="0" role="button" aria-label="View details for ' +
-      p.title +
-      '">' +
-      '<div class="property-media">' +
-      (p.image ? '<img src="' + p.image + '" alt="" onerror="this.style.display=\'none\'" />' : "") +
-      '<span class="property-badge">' +
-      p.status +
-      "</span>" +
+      '<article class="card-outlined property-card" data-id="' + esc(p.id) +
+      '" tabindex="0" role="button" aria-label="View details for ' + esc(p.title) + '">' +
+      '<div class="property-media' + (hasLogo(p) ? " has-logo" : "") + '">' +
+      propertyMediaHTML(p) +
+      '<span class="property-badge">' + esc(statusLabel(p.status)) + "</span>" +
+      (p.tag ? '<span class="property-badge property-badge--tag">' + esc(p.tag) + "</span>" : "") +
       buildingIconSVG() +
       "</div>" +
       '<div class="property-body">' +
-      "<h3>" +
-      p.title +
-      "</h3>" +
-      '<p class="property-location">' +
-      pinIconSVG() +
-      p.location +
-      "</p>" +
-      '<p class="property-price">' +
-      AED.format(p.price) +
-      "</p>" +
-      '<div class="property-meta"><span>' +
-      p.bedrooms +
-      " bed</span><span>" +
-      p.bathrooms +
-      " bath</span><span>" +
-      p.area.toLocaleString() +
-      " sq ft</span></div>" +
+      (p.developer ? '<p class="property-dev">' + esc(p.developer) + "</p>" : "") +
+      "<h3>" + esc(p.title) + "</h3>" +
+      '<p class="property-location">' + pinIconSVG() + esc(p.location) + "</p>" +
+      '<p class="property-price"><span class="property-price-from">From</span> ' + AED.format(p.price) + "</p>" +
+      (meta.length ? '<div class="property-meta">' + meta.join("") + "</div>" : "") +
       "</div>" +
       "</article>"
     );
@@ -609,6 +688,9 @@ function initLocationAutocomplete() {
   var input = document.getElementById("searchLocation");
   var list = document.getElementById("searchLocationList");
   if (!input || !list) return;
+
+  // Suggestions come from the properties actually listed, so they stay in
+  // sync as listings are added; falls back to the default list if empty.
   var seen = {};
   var fromListings = PROPERTIES.map(function (p) { return p.location; }).filter(function (loc) {
     if (!loc || seen[loc]) return false;
@@ -616,6 +698,7 @@ function initLocationAutocomplete() {
     return true;
   });
   if (fromListings.length) LOCATIONS = fromListings.sort();
+
   var activeIndex = -1;
 
   function render(items) {
@@ -683,34 +766,36 @@ function initLocationAutocomplete() {
     }
   });
 }
-  // function initSearch() {
-  //   var form = document.getElementById("heroSearchForm");
-  //   if (!form) return;
-
-  //   form.addEventListener("submit", function (e) {
-  //     e.preventDefault();
-  //     var location = document.getElementById("searchLocation").value.trim();
-  //     var type = document.getElementById("searchType").value;
-  //     var budget = document.getElementById("searchBudget").value;
-
-  //     var filtered = PROPERTIES.filter(function (p) {
-  //       var matchLocation = !location || p.location.toLowerCase().indexOf(location.toLowerCase()) !== -1;
-  //       var matchType = !type || p.type === type;
-  //       var matchBudget = !budget || p.budgetTier === budget;
-  //       return matchLocation && matchType && matchBudget;
-  //     });
-
-  //     renderPropertiesSection(filtered);
-
-  //     var target = document.getElementById("properties");
-  //     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   });
-  // }
+  /* -----------------------------------------------------
+     Search: results show up in the "Off-plan or ready to move
+     in" section (#browse) and the page scrolls straight to it.
+     On pages without that section (e.g. /properties/) it falls
+     back to filtering the main grid in place.
+  ----------------------------------------------------- */
   function budgetTierOf(p) {
-    if (p.budgetTier) return p.budgetTier;
-    if (p.price <= 5000000) return "1-5";
-    if (p.price <= 10000000) return "5-10";
+    var v = p.price;
+    if (v < 1000000) return "0-1";
+    if (v <= 2000000) return "1-2";
+    if (v <= 5000000) return "2-5";
+    if (v <= 10000000) return "5-10";
     return "10+";
+  }
+
+  // Fills the Developer dropdown from the listings, so new developers
+  // appear on their own as properties are added.
+  function initDeveloperOptions() {
+    var sel = document.getElementById("searchDeveloper");
+    if (!sel) return;
+    var seen = {};
+    PROPERTIES.forEach(function (p) { if (p.developer) seen[p.developer] = true; });
+    Object.keys(seen)
+      .sort(function (a, b) { return a.localeCompare(b); })
+      .forEach(function (d) {
+        var o = document.createElement("option");
+        o.value = d;
+        o.textContent = d;
+        sel.appendChild(o);
+      });
   }
 
   function initSearch() {
@@ -719,18 +804,19 @@ function initLocationAutocomplete() {
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var location = document.getElementById("searchLocation").value.trim();
-      var type = document.getElementById("searchType").value;
+      var location = document.getElementById("searchLocation").value.trim().toLowerCase();
+      var developer = document.getElementById("searchDeveloper").value;
+      var status = document.getElementById("searchStatus").value;
       var budget = document.getElementById("searchBudget").value;
-      var bedsEl = document.getElementById("searchBedrooms");
-      var beds = bedsEl ? bedsEl.value : "";
 
       var filtered = PROPERTIES.filter(function (p) {
-        var matchLocation = !location || p.location.toLowerCase().indexOf(location.toLowerCase()) !== -1;
-        var matchType = !type || p.type === type;
+        var matchLocation = !location ||
+          (p.location || "").toLowerCase().indexOf(location) !== -1 ||
+          (p.title || "").toLowerCase().indexOf(location) !== -1;
+        var matchDeveloper = !developer || p.developer === developer;
+        var matchStatus = !status || p.status === status;
         var matchBudget = !budget || budgetTierOf(p) === budget;
-        var matchBeds = !beds || (beds === "4+" ? p.bedrooms >= 4 : p.bedrooms === parseInt(beds, 10));
-        return matchLocation && matchType && matchBudget && matchBeds;
+        return matchLocation && matchDeveloper && matchStatus && matchBudget;
       });
 
       var browseGrid = document.getElementById("categoryGrid");
@@ -753,18 +839,11 @@ function initLocationAutocomplete() {
     var desc = document.getElementById("categoryDesc");
     var pills = document.querySelectorAll(".category-pills .pill");
 
-    if (list.length === 0) {
-      grid.innerHTML = '<div class="empty-state"><p>No properties match your search yet.</p>' +
-        '<button type="button" class="btn btn-outline" id="clearSearchEmptyBtn">Clear search</button></div>';
-    } else {
-      grid.innerHTML = list.map(propertyCardHTML).join("");
-      grid.querySelectorAll(".property-card").forEach(function (card) {
-        card.addEventListener("click", function () { openModal(card.getAttribute("data-id")); });
-        card.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.getAttribute("data-id")); }
-        });
-      });
-    }
+    renderBrowseGrid(
+      list,
+      '<div class="empty-state"><p>No properties match your search yet.</p>' +
+        '<button type="button" class="btn btn-outline" id="clearSearchEmptyBtn">Clear search</button></div>'
+    );
 
     pills.forEach(function (p) {
       p.classList.remove("is-active");
@@ -784,9 +863,26 @@ function initLocationAutocomplete() {
     if (b1) b1.addEventListener("click", clearSearch);
     if (b2) b2.addEventListener("click", clearSearch);
   }
+
   /* -----------------------------------------------------
      Property detail modal
   ----------------------------------------------------- */
+  function modalFactsHTML(p) {
+    var rows = [
+      ["Developer", p.developer],
+      ["Unit types", p.unitTypes],
+      ["Handover", p.handover],
+      ["Payment plan", p.paymentPlan],
+      ["Bedrooms", p.bedrooms],
+      ["Bathrooms", p.bathrooms],
+      ["Area", p.area ? Number(p.area).toLocaleString() + " sq ft" : ""]
+    ].filter(function (r) { return r[1]; });
+    if (!rows.length) return "";
+    return '<dl class="modal-facts">' + rows.map(function (r) {
+      return "<div><dt>" + r[0] + "</dt><dd>" + esc(r[1]) + "</dd></div>";
+    }).join("") + "</dl>";
+  }
+
   function openModal(id) {
     var property = PROPERTIES.filter(function (p) {
       return p.id === id;
@@ -802,38 +898,34 @@ function initLocationAutocomplete() {
       '<button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close">' +
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l14 14M15 1L1 15"/></svg>' +
       "</button>" +
-      '<div class="modal-media">' +
-      (property.image ? '<img src="' + property.image + '" alt="" onerror="this.style.display=\'none\'" />' : "") +
+      '<div class="modal-media' + (hasLogo(property) ? " has-logo" : "") + '">' +
+      propertyMediaHTML(property) +
       buildingIconSVG() +
       "</div>" +
       '<div class="modal-body">' +
-      '<span class="property-badge">' +
-      property.status +
+      '<span class="property-badge" style="position:static;display:inline-block">' +
+      esc(statusLabel(property.status)) +
       "</span>" +
+      (property.tag ? ' <span class="property-badge property-badge--tag" style="position:static;display:inline-block">' + esc(property.tag) + "</span>" : "") +
       "<h2 style=\"margin-top:0.9rem\">" +
-      property.title +
+      esc(property.title) +
       "</h2>" +
       '<p class="property-location" style="margin-top:0.5rem">' +
       pinIconSVG() +
       property.location +
       "</p>" +
-      '<p class="property-price" style="margin-top:1rem">' +
+      '<p class="property-price" style="margin-top:1rem"><span class="property-price-from">From</span> ' +
       AED.format(property.price) +
       "</p>" +
-      '<div class="property-meta" style="border-top:none;padding-top:0">' +
-      "<span>" +
-      property.bedrooms +
-      " bed</span><span>" +
-      property.bathrooms +
-      " bath</span><span>" +
-      property.area.toLocaleString() +
-      " sq ft</span></div>" +
+      modalFactsHTML(property) +
       '<p class="body-sm" style="margin-top:1.25rem">' +
-      property.description +
+      esc(property.description) +
       "</p>" +
-      '<div class="modal-amenities">' +
-      property.amenities.map(function (a) { return "<span>" + a + "</span>"; }).join("") +
-      "</div>" +
+      ((property.amenities && property.amenities.length)
+        ? '<div class="modal-amenities">' +
+          property.amenities.map(function (a) { return "<span>" + esc(a) + "</span>"; }).join("") +
+          "</div>"
+        : "") +
       '<div class="modal-actions">' +
       '<button type="button" class="btn btn-primary btn-block" id="askAboutBtn">Ask About This Property</button>' +
       "</div>" +
@@ -883,7 +975,7 @@ function initLocationAutocomplete() {
           .json()
           .catch(function () { return {}; })
           .then(function (body) {
-                         if (res.ok && window.fbq) window.fbq("track", "Lead");
+            if (res.ok && window.fbq) window.fbq("track", "Lead");
             return { ok: res.ok, error: (body && body.error) || "" };
           });
       })
@@ -916,7 +1008,7 @@ function initLocationAutocomplete() {
       (property.image ? '<img src="' + property.image + '" alt="" onerror="this.style.display=\'none\'" />' : "") +
       buildingIconSVG() +
       '<div class="lead-modal-media-caption">' +
-      '<span class="lead-modal-badge">' + property.status + "</span>" +
+      '<span class="lead-modal-badge">' + statusLabel(property.status) + "</span>" +
       "<h3 style=\"margin-top:0.75rem\">" + property.title + "</h3>" +
       '<p class="property-location" style="margin-top:0.4rem">' + pinIconSVG() + property.location + "</p>" +
       "</div>" +
@@ -1430,10 +1522,8 @@ function initLocationAutocomplete() {
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        renderRealtors();
+    renderRealtors();
     loadInstagramReels();
-
-    // Only the property grid depends on the fetched data — everything
 
     // Only the property grid depends on the fetched data — everything
     // else above is ready immediately.
@@ -1441,6 +1531,7 @@ function initLocationAutocomplete() {
       loadProperties().then(function () {
         renderPropertiesSection(PROPERTIES);
         initPropertiesViewMore();
+        initDeveloperOptions();
         initSearch();
         initLocationAutocomplete();
         initCategoryPills();
