@@ -1127,3 +1127,12 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
 }
 .whatsapp-float:hover { transform: scale(1.08); }
 .whatsapp-float.is-visible { display: flex; }
+
+.legal-body h2 { margin-top: 2.75rem; font-size: 1.6rem; }
+.legal-body h2:first-of-type { margin-top: 2.25rem; }
+.legal-body p { margin-top: 0.85rem; }
+.legal-body a { color: var(--gold); }
+.legal-body a[href^="tel"] { white-space: nowrap; }
+#browse { scroll-margin-top: 4.5rem; }
+.link-btn { background: none; border: 0; padding: 0; margin-left: 0.5rem; font: inherit; color: var(--gold); text-decoration: underline; cursor: pointer; }
+.link-btn:hover { color: var(--ivory); }
