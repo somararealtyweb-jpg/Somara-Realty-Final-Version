@@ -128,7 +128,7 @@
     "Off-Plan": "off-plan",
     "Ready": "ready to move in"
   };
-
+var browseApi = {};
   function initCategoryPills() {
     var pills = document.querySelectorAll(".category-pills .pill");
     var grid = document.getElementById("categoryGrid");
