@@ -609,7 +609,13 @@ function initLocationAutocomplete() {
   var input = document.getElementById("searchLocation");
   var list = document.getElementById("searchLocationList");
   if (!input || !list) return;
-
+  var seen = {};
+  var fromListings = PROPERTIES.map(function (p) { return p.location; }).filter(function (loc) {
+    if (!loc || seen[loc]) return false;
+    seen[loc] = true;
+    return true;
+  });
+  if (fromListings.length) LOCATIONS = fromListings.sort();
   var activeIndex = -1;
 
   function render(items) {
