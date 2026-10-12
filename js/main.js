@@ -683,6 +683,36 @@ function initLocationAutocomplete() {
     }
   });
 }
+  // function initSearch() {
+  //   var form = document.getElementById("heroSearchForm");
+  //   if (!form) return;
+
+  //   form.addEventListener("submit", function (e) {
+  //     e.preventDefault();
+  //     var location = document.getElementById("searchLocation").value.trim();
+  //     var type = document.getElementById("searchType").value;
+  //     var budget = document.getElementById("searchBudget").value;
+
+  //     var filtered = PROPERTIES.filter(function (p) {
+  //       var matchLocation = !location || p.location.toLowerCase().indexOf(location.toLowerCase()) !== -1;
+  //       var matchType = !type || p.type === type;
+  //       var matchBudget = !budget || p.budgetTier === budget;
+  //       return matchLocation && matchType && matchBudget;
+  //     });
+
+  //     renderPropertiesSection(filtered);
+
+  //     var target = document.getElementById("properties");
+  //     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   });
+  // }
+  function budgetTierOf(p) {
+    if (p.budgetTier) return p.budgetTier;
+    if (p.price <= 5000000) return "1-5";
+    if (p.price <= 10000000) return "5-10";
+    return "10+";
+  }
+
   function initSearch() {
     var form = document.getElementById("heroSearchForm");
     if (!form) return;
@@ -692,21 +722,68 @@ function initLocationAutocomplete() {
       var location = document.getElementById("searchLocation").value.trim();
       var type = document.getElementById("searchType").value;
       var budget = document.getElementById("searchBudget").value;
+      var bedsEl = document.getElementById("searchBedrooms");
+      var beds = bedsEl ? bedsEl.value : "";
 
       var filtered = PROPERTIES.filter(function (p) {
         var matchLocation = !location || p.location.toLowerCase().indexOf(location.toLowerCase()) !== -1;
         var matchType = !type || p.type === type;
-        var matchBudget = !budget || p.budgetTier === budget;
-        return matchLocation && matchType && matchBudget;
+        var matchBudget = !budget || budgetTierOf(p) === budget;
+        var matchBeds = !beds || (beds === "4+" ? p.bedrooms >= 4 : p.bedrooms === parseInt(beds, 10));
+        return matchLocation && matchType && matchBudget && matchBeds;
       });
 
-      renderPropertiesSection(filtered);
+      var browseGrid = document.getElementById("categoryGrid");
+      var browseSection = document.getElementById("browse");
 
+      if (browseGrid && browseSection) {
+        showSearchResults(filtered, form);
+        browseSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      renderPropertiesSection(filtered);
       var target = document.getElementById("properties");
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
 
+  function showSearchResults(list, form) {
+    var grid = document.getElementById("categoryGrid");
+    var desc = document.getElementById("categoryDesc");
+    var pills = document.querySelectorAll(".category-pills .pill");
+
+    if (list.length === 0) {
+      grid.innerHTML = '<div class="empty-state"><p>No properties match your search yet.</p>' +
+        '<button type="button" class="btn btn-outline" id="clearSearchEmptyBtn">Clear search</button></div>';
+    } else {
+      grid.innerHTML = list.map(propertyCardHTML).join("");
+      grid.querySelectorAll(".property-card").forEach(function (card) {
+        card.addEventListener("click", function () { openModal(card.getAttribute("data-id")); });
+        card.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card.getAttribute("data-id")); }
+        });
+      });
+    }
+
+    pills.forEach(function (p) {
+      p.classList.remove("is-active");
+      p.setAttribute("aria-selected", "false");
+    });
+    if (desc) {
+      desc.innerHTML = list.length + (list.length === 1 ? " property matches" : " properties match") +
+        ' your search. <button type="button" class="link-btn" id="clearSearchBtn">Clear search</button>';
+    }
+
+    function clearSearch() {
+      if (form) form.reset();
+      if (browseApi.renderCategory) browseApi.renderCategory("Off-Plan");
+    }
+    var b1 = document.getElementById("clearSearchBtn");
+    var b2 = document.getElementById("clearSearchEmptyBtn");
+    if (b1) b1.addEventListener("click", clearSearch);
+    if (b2) b2.addEventListener("click", clearSearch);
+  }
   /* -----------------------------------------------------
      Property detail modal
   ----------------------------------------------------- */
