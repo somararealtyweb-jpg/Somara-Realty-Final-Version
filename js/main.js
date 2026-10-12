@@ -158,7 +158,7 @@ var browseApi = {};
         p.setAttribute("aria-selected", isActive ? "true" : "false");
       });
     }
-
+browseApi.renderCategory = renderCategory;
     // Handles /#off-plan, /#ready-to-move-in links (header nav, footer, and
     // any other page linking in) — these hashes have no matching element
     // id, so the browser won't auto-scroll; this does it manually and also
