@@ -1396,9 +1396,10 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     function animateCount(el) {
       var target = parseInt(el.getAttribute("data-count-to"), 10) || 0;
       var suffix = el.getAttribute("data-suffix") || "";
+      var prefix = el.getAttribute("data-prefix") || "";
 
       if (reduceMotion) {
-        el.textContent = target + suffix;
+        el.textContent = prefix + target + suffix;
         return;
       }
 
@@ -1409,7 +1410,7 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
         if (!start) start = timestamp;
         var progress = Math.min((timestamp - start) / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 2); // ease-out
-        el.textContent = Math.round(eased * target) + suffix;
+        el.textContent = prefix + Math.round(eased * target) + suffix;
         if (progress < 1) window.requestAnimationFrame(step);
       }
       window.requestAnimationFrame(step);
