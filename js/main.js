@@ -685,10 +685,6 @@
 var LOCATIONS = ["Downtown Dubai", "Dubai Marina", "Dubai Hills Estate", "Business Bay", "Palm Jumeirah", "Arabian Ranches"];
 
 function initLocationAutocomplete() {
-  var input = document.getElementById("searchLocation");
-  var list = document.getElementById("searchLocationList");
-  if (!input || !list) return;
-
   // Suggestions come from the properties actually listed, so they stay in
   // sync as listings are added; falls back to the default list if empty.
   var seen = {};
@@ -698,6 +694,21 @@ function initLocationAutocomplete() {
     return true;
   });
   if (fromListings.length) LOCATIONS = fromListings.sort();
+  attachAutocomplete("searchLocation", "searchLocationList", LOCATIONS);
+
+  var seenT = {};
+  var titles = PROPERTIES.map(function (p) { return p.title; }).filter(function (t) {
+    if (!t || seenT[t]) return false;
+    seenT[t] = true;
+    return true;
+  }).sort();
+  attachAutocomplete("searchProperty", "searchPropertyList", titles);
+}
+
+function attachAutocomplete(inputId, listId, LOCATIONS) {
+  var input = document.getElementById(inputId);
+  var list = document.getElementById(listId);
+  if (!input || !list) return;
 
   var activeIndex = -1;
 
@@ -806,17 +817,15 @@ function initLocationAutocomplete() {
       e.preventDefault();
       var location = document.getElementById("searchLocation").value.trim().toLowerCase();
       var developer = document.getElementById("searchDeveloper").value;
-      var status = document.getElementById("searchStatus").value;
+      var propName = document.getElementById("searchProperty").value.trim().toLowerCase();
       var budget = document.getElementById("searchBudget").value;
 
       var filtered = PROPERTIES.filter(function (p) {
-        var matchLocation = !location ||
-          (p.location || "").toLowerCase().indexOf(location) !== -1 ||
-          (p.title || "").toLowerCase().indexOf(location) !== -1;
+        var matchLocation = !location || (p.location || "").toLowerCase().indexOf(location) !== -1;
         var matchDeveloper = !developer || p.developer === developer;
-        var matchStatus = !status || p.status === status;
+        var matchProperty = !propName || (p.title || "").toLowerCase().indexOf(propName) !== -1;
         var matchBudget = !budget || budgetTierOf(p) === budget;
-        return matchLocation && matchDeveloper && matchStatus && matchBudget;
+        return matchLocation && matchDeveloper && matchProperty && matchBudget;
       });
 
       var browseGrid = document.getElementById("categoryGrid");
