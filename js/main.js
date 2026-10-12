@@ -820,19 +820,47 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       var propName = document.getElementById("searchProperty").value.trim().toLowerCase();
       var budget = document.getElementById("searchBudget").value;
 
-      var filtered = PROPERTIES.filter(function (p) {
-        var matchLocation = !location || (p.location || "").toLowerCase().indexOf(location) !== -1;
-        var matchDeveloper = !developer || p.developer === developer;
-        var matchProperty = !propName || (p.title || "").toLowerCase().indexOf(propName) !== -1;
-        var matchBudget = !budget || budgetTierOf(p) === budget;
-        return matchLocation && matchDeveloper && matchProperty && matchBudget;
-      });
+      function run(skip) {
+        return PROPERTIES.filter(function (p) {
+          var matchLocation = skip.location || !location || (p.location || "").toLowerCase().indexOf(location) !== -1;
+          var matchDeveloper = skip.developer || !developer || p.developer === developer;
+          var matchProperty = skip.property || !propName || (p.title || "").toLowerCase().indexOf(propName) !== -1;
+          var matchBudget = skip.budget || !budget || budgetTierOf(p) === budget;
+          return matchLocation && matchDeveloper && matchProperty && matchBudget;
+        });
+      }
+
+      var filtered = run({});
+      var note = "";
+
+      // No exact match: loosen the filters one at a time (budget first, then
+      // location, then developer) and show the closest matches instead of an
+      // empty page, with a note saying what was ignored.
+      if (filtered.length === 0) {
+        var relax = [
+          { skip: { budget: true }, label: "budget", used: !!budget },
+          { skip: { budget: true, location: true }, label: "budget and location", used: !!budget || !!location },
+          { skip: { budget: true, location: true, developer: true }, label: "budget, location and developer", used: !!budget || !!location || !!developer }
+        ];
+        for (var i = 0; i < relax.length; i++) {
+          if (!relax[i].used) continue;
+          var sk = relax[i].skip;
+          var stillActive = (!sk.location && location) || (!sk.developer && developer) || (!sk.property && propName) || (!sk.budget && budget);
+          if (!stillActive) continue; // never drop every filter (would list everything)
+          var alt = run(sk);
+          if (alt.length) {
+            filtered = alt;
+            note = "No exact match for all your filters, so these are the closest matches (ignoring " + relax[i].label + ").";
+            break;
+          }
+        }
+      }
 
       var browseGrid = document.getElementById("categoryGrid");
       var browseSection = document.getElementById("browse");
 
       if (browseGrid && browseSection) {
-        showSearchResults(filtered, form);
+        showSearchResults(filtered, form, note);
         browseSection.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
       }
@@ -843,24 +871,29 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     });
   }
 
-  function showSearchResults(list, form) {
+  function showSearchResults(list, form, note) {
     var grid = document.getElementById("categoryGrid");
     var desc = document.getElementById("categoryDesc");
     var pills = document.querySelectorAll(".category-pills .pill");
 
     renderBrowseGrid(
       list,
-      '<div class="empty-state"><p>No properties match your search yet.</p>' +
+      '<div class="empty-state"><p>No properties match your search yet. Tell us what you are looking for and a consultant will find options for you.</p>' +
+        '<button type="button" class="btn btn-primary" id="searchConsultBtn">Talk to a consultant</button> ' +
         '<button type="button" class="btn btn-outline" id="clearSearchEmptyBtn">Clear search</button></div>'
     );
+    var consultBtn = document.getElementById("searchConsultBtn");
+    if (consultBtn) {
+      consultBtn.addEventListener("click", function () { openConsultationModal("Search - No Results"); });
+    }
 
     pills.forEach(function (p) {
       p.classList.remove("is-active");
       p.setAttribute("aria-selected", "false");
     });
     if (desc) {
-      desc.innerHTML = list.length + (list.length === 1 ? " property matches" : " properties match") +
-        ' your search. <button type="button" class="link-btn" id="clearSearchBtn">Clear search</button>';
+      desc.innerHTML = (note ? note + " " : list.length + (list.length === 1 ? " property matches" : " properties match") + " your search. ") +
+        '<button type="button" class="link-btn" id="clearSearchBtn">Clear search</button>';
     }
 
     function clearSearch() {
