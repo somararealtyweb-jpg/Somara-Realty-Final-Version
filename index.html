@@ -96,7 +96,7 @@
       </div>
 
       <div class="hero-search">
-        <form id="heroSearchForm">
+        <!-- <form id="heroSearchForm">
           <div class="field">
             <label for="searchLocation">Location</label>
             <input type="text" id="searchLocation" placeholder="Any location" autocomplete="off" />
@@ -129,6 +129,36 @@
               <option>2</option>
               <option>3</option>
               <option>4+</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form> -->
+                <form id="heroSearchForm">
+          <div class="field">
+            <label for="searchLocation">Location</label>
+            <input type="text" id="searchLocation" placeholder="Any location" autocomplete="off" />
+            <div class="autocomplete-list" id="searchLocationList"></div>
+          </div>
+          <div class="field">
+            <label for="searchDeveloper">Developer</label>
+            <select id="searchDeveloper">
+              <option value="">Any developer</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="searchProperty">Property</label>
+            <input type="text" id="searchProperty" placeholder="Any property" autocomplete="off" />
+            <div class="autocomplete-list" id="searchPropertyList"></div>
+          </div>
+          <div class="field">
+            <label for="searchBudget">Budget (AED)</label>
+            <select id="searchBudget">
+              <option value="">Any budget</option>
+              <option value="0-1">Under 1M</option>
+              <option value="1-2">1M – 2M</option>
+              <option value="2-5">2M – 5M</option>
+              <option value="5-10">5M – 10M</option>
+              <option value="10+">10M+</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Search</button>
