@@ -23,7 +23,8 @@
         "Private cabanas",
         "EV charging",
         "Spa & wellness"
-      ]
+      ],
+      "image": "/images/properties/p1.jpg"
     },
     {
       "id": "p2",
@@ -44,7 +45,8 @@
         "Gym",
         "Kids' play area",
         "Amusement park"
-      ]
+      ],
+      "image": "/images/properties/p2.jpg"
     },
     {
       "id": "p3",
@@ -56,7 +58,8 @@
       "price": 3500000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "Canal Crown, a DAMAC development in Business Bay. Starting from AED 3,500,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Canal Crown, a DAMAC development in Business Bay. Starting from AED 3,500,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p3.jpg"
     },
     {
       "id": "p4",
@@ -68,7 +71,8 @@
       "price": 2545000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Skyrise, a Binghatti development in Business Bay. Starting from AED 2,545,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Skyrise, a Binghatti development in Business Bay. Starting from AED 2,545,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p4.jpg"
     },
     {
       "id": "p5",
@@ -80,7 +84,8 @@
       "price": 1054000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Azizi Sakandar, a Azizi development in Jebel Ali Village. Starting from AED 1,054,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Sakandar, a Azizi development in Jebel Ali Village. Starting from AED 1,054,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p5.jpg"
     },
     {
       "id": "p6",
@@ -101,7 +106,8 @@
         "Leisure lounge",
         "Restaurants & retail",
         "Kids' play area"
-      ]
+      ],
+      "image": "/images/properties/p6.jpg"
     },
     {
       "id": "p7",
@@ -121,7 +127,8 @@
         "Landscaped gardens",
         "Cafés & restaurants",
         "Retail"
-      ]
+      ],
+      "image": "/images/properties/p7.jpg"
     },
     {
       "id": "p8",
@@ -142,7 +149,8 @@
         "Concierge",
         "24-hour security",
         "Central A/C"
-      ]
+      ],
+      "image": "/images/properties/p8.jpg"
     },
     {
       "id": "p9",
@@ -154,7 +162,8 @@
       "price": 677000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "Binghatti Vintage, a Binghatti development in Wadi Al Safa 3. Starting from AED 677,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Vintage, a Binghatti development in Wadi Al Safa 3. Starting from AED 677,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p9.jpg"
     },
     {
       "id": "p10",
@@ -175,7 +184,8 @@
         "Kids' play area",
         "Steam rooms & saunas",
         "BBQ areas"
-      ]
+      ],
+      "image": "/images/properties/p10.jpg"
     },
     {
       "id": "p11",
