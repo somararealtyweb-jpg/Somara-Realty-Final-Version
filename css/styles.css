@@ -1191,3 +1191,88 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
   color: var(--stone);
 }
 .modal-facts dd { margin: 0.2rem 0 0; color: var(--ivory); font-size: 0.95rem; }
+
+/* =========================================================
+   Oct 17 updates
+   ========================================================= */
+
+/* 1. Popup close (X): always above the photo; on phones it stays pinned
+   at the top-right of the popup while the popup scrolls. */
+.modal-close { z-index: 10; cursor: pointer; }
+@media (max-width: 719px) {
+  .lead-modal-inner { display: block; }
+  .modal-close {
+    position: sticky;
+    top: 0.75rem;
+    margin: 0.75rem 0.75rem -3.25rem auto;
+    background: rgba(11, 10, 8, 0.85);
+  }
+  .lead-modal-media-caption { padding-right: 3.75rem; }
+}
+
+/* 4. Hero search with only Location + Budget */
+@media (min-width: 800px) {
+  .hero-search form.hero-search-compact { grid-template-columns: repeat(2, 1fr) auto; }
+}
+
+/* 2. Mortgage calculator */
+.mortgage-section { background: var(--ink); }
+.mortgage-card {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  background: var(--ink-2);
+  border: 1px solid var(--ink-3);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+@media (min-width: 480px) { .mortgage-card { padding: 1.5rem; } }
+@media (min-width: 860px) {
+  .mortgage-card { grid-template-columns: 1.1fr 1fr; gap: 2rem; padding: 2rem; align-items: start; }
+}
+.mortgage-inputs { display: grid; gap: 1.25rem; min-width: 0; }
+.mortgage-inputs .field input[type="text"],
+.mortgage-inputs .field input[type="number"] { font-size: 1rem; }
+.mortgage-inputs .field input[type="range"] {
+  padding: 0;
+  height: 1.75rem;
+  background: transparent;
+  border: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.mc-val { float: right; color: var(--gold); letter-spacing: 0; text-transform: none; font-size: 0.85rem; }
+.mc-hint { margin-top: 0.25rem; font-size: 0.8rem; color: var(--stone); }
+.mortgage-result {
+  background: var(--ink);
+  border: 1px solid rgba(198, 161, 100, 0.3);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  min-width: 0;
+}
+@media (min-width: 480px) { .mortgage-result { padding: 1.5rem; } }
+.mc-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+.mc-monthly {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.1;
+  color: var(--gold);
+  overflow-wrap: anywhere;
+}
+.mc-breakdown { margin-top: 1.25rem; }
+.mc-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--ink-3);
+}
+.mc-breakdown dt { font-size: 0.85rem; color: var(--ivory-dim); }
+.mc-breakdown dd { margin: 0; font-size: 0.95rem; color: var(--ivory); text-align: right; }
+.mortgage-result .btn { width: 100%; margin-top: 1.25rem; }
+.mc-note { margin-top: 1rem; font-size: 0.75rem; line-height: 1.5; color: var(--stone); }
+
+.mortgage-section .section-head + p { margin-top: 1rem; }
