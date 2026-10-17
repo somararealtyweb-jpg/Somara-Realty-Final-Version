@@ -1,0 +1,255 @@
+/* =========================================================
+   About page (about/index.html) — editorial layout.
+   Loads after styles.css and reuses its colour tokens and fonts.
+   All classes are prefixed "ab-" so nothing else on the site is touched.
+   ========================================================= */
+
+.ab { --ab-pad: 1.5rem; --ab-line: rgba(198, 161, 100, 0.28); --ab-gold-line: rgba(198, 161, 100, 0.55); background: var(--ink); }
+@media (min-width: 768px)  { .ab { --ab-pad: 2.5rem; } }
+@media (min-width: 1200px) { .ab { --ab-pad: 3.5rem; } }
+
+/* shared building blocks ---------------------------------- */
+.ab-wrap { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--ab-pad); }
+.ab-section { padding-block: 4rem; border-bottom: 1px solid var(--ab-line); }
+@media (min-width: 768px) { .ab-section { padding-block: 5rem; } }
+
+.ab-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.ab-eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--ab-gold-line); max-width: 16rem; }
+
+.ab h1, .ab h2, .ab h3 { font-weight: 500; letter-spacing: -0.005em; }
+.ab-h2 { font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); line-height: 1.08; margin-top: 1.25rem; color: var(--ivory); }
+.ab-sub { margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--ivory-dim); }
+
+.ab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--gold);
+  transition: color 150ms var(--ease), border-color 150ms var(--ease);
+}
+.ab-link:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+/* 01 · hero ------------------------------------------------ */
+.ab-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 5rem;               /* clears the fixed header */
+  border-bottom: 1px solid var(--ab-line);
+}
+.ab-hero-text {
+  padding: 2.5rem var(--ab-pad) 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ab-hero h1 {
+  margin-top: 1.5rem;
+  font-size: clamp(3rem, 2rem + 4.5vw, 5.25rem);
+  line-height: 1.02;
+  color: var(--ivory);
+}
+.ab-quote {
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 1rem + 1.4vw, 1.9rem);
+  line-height: 1.3;
+  color: var(--ivory);
+  max-width: 30rem;
+}
+.ab-lead { margin-top: 1.5rem; max-width: 30rem; font-size: 0.98rem; line-height: 1.7; color: var(--ivory-dim); }
+.ab-follow {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ab-gold-line);
+  max-width: 30rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ab-follow svg { flex: none; width: 1.75rem; height: 1.75rem; color: var(--gold); }
+.ab-follow strong { display: block; font-weight: 600; font-size: 0.95rem; color: var(--gold); }
+.ab-follow span { display: block; margin-top: 0.15rem; font-size: 0.82rem; color: var(--ivory-dim); }
+.ab-hero .ab-link { margin-top: 2rem; align-self: flex-start; }
+
+.ab-hero-photo { position: relative; margin: 0; aspect-ratio: 4 / 5; background: var(--ink-2); overflow: hidden; }
+.ab-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.ab-hero-photo::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 35%;
+  background: linear-gradient(0deg, rgba(11,10,8,0.75) 0%, rgba(11,10,8,0) 100%);
+}
+.ab-hero-photo figcaption {
+  position: absolute; left: 1.25rem; bottom: 1rem; z-index: 1;
+  font-size: 0.78rem; line-height: 1.4; color: var(--ivory);
+}
+@media (min-width: 768px) {
+  .ab-hero { grid-template-columns: 1fr 1fr; min-height: 38rem; }
+  .ab-hero-text {
+    padding-block: 3.5rem;
+    padding-left: max(var(--ab-pad), calc((100vw - var(--container-max)) / 2 + var(--ab-pad)));
+    padding-right: 2.5rem;
+  }
+  .ab-hero-photo { aspect-ratio: auto; }
+}
+
+/* 02 · three markets ---------------------------------------- */
+.ab-markets-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.ab-aside { font-size: 0.78rem; color: var(--stone); }
+.ab-markets-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+.ab-market { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.1rem; align-items: center; }
+.ab-market-top { position: relative; }
+.ab-market-media { aspect-ratio: 1 / 1; overflow: hidden; background: var(--ink-2); }
+.ab-market-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ab-node { display: none; }
+.ab-market-body { text-align: left; }
+.ab-market-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.ab-market-num { margin-top: 0.3rem; font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.4rem); line-height: 1.05; color: var(--gold); }
+.ab-market-what { margin-top: 0.45rem; font-size: 0.95rem; color: var(--ivory); }
+.ab-market-note { margin-top: 0.2rem; font-size: 0.82rem; color: var(--ivory-dim); }
+
+@media (min-width: 700px) {
+  .ab-markets-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .ab-market { display: block; text-align: center; }
+  .ab-market-media { aspect-ratio: 1.05 / 1; }
+  .ab-market-body { text-align: center; padding-top: 2.6rem; }
+  /* gold timeline running through the numbered circles */
+  .ab-market-top::after {
+    content: ""; position: absolute; bottom: 0; height: 1px; background: var(--gold);
+    left: -0.75rem; right: -0.75rem;
+  }
+  .ab-market:first-child .ab-market-top::after { left: 0; }
+  .ab-market:last-child .ab-market-top::after { right: 0; }
+  .ab-node {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; left: 50%; top: 100%; z-index: 2;
+    width: 2.1rem; height: 2.1rem; border-radius: 50%;
+    border: 1px solid var(--gold); background: var(--ink); color: var(--gold);
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* 03 · client experience ------------------------------------ */
+.ab-client-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+.ab-client-photo { margin-top: 2rem; aspect-ratio: 16 / 9; background: var(--ink-2); overflow: hidden; }
+.ab-client-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ab-points { display: grid; align-content: end; }
+.ab-point { display: grid; grid-template-columns: 3rem 1fr; gap: 0.5rem 1rem; padding: 1.25rem 0; border-top: 1px solid var(--ab-gold-line); }
+.ab-point-num { font-family: var(--font-display); font-weight: 500; font-size: 1.6rem; line-height: 1; color: var(--gold); }
+.ab-point h3 { font-size: 1.3rem; line-height: 1.2; color: var(--ivory); }
+.ab-point p { margin-top: 0.6rem; font-size: 0.85rem; line-height: 1.6; color: var(--ivory-dim); }
+@media (min-width: 900px) {
+  .ab-client-grid { grid-template-columns: 1.35fr 1fr; gap: 3rem; align-items: stretch; }
+  .ab-points { padding-left: 1rem; }
+  .ab-point { grid-template-columns: 4rem 1fr; }
+}
+
+.ab-strip {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--ab-gold-line);
+  border-bottom: 1px solid var(--ab-gold-line);
+  padding-block: 1.25rem;
+  display: grid; grid-template-columns: 1fr; gap: 0.9rem; align-items: center;
+}
+.ab-strip-tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.ab-strip-types { font-size: 0.82rem; color: var(--ivory-dim); }
+.ab-strip-range { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; color: var(--gold); }
+.ab-strip .btn { justify-self: stretch; width: 100%; box-sizing: border-box; min-width: 0; white-space: normal; }
+@media (min-width: 900px) {
+  .ab-strip { grid-template-columns: auto auto auto 1fr; gap: 0; }
+  .ab-strip > * { padding-inline: 1.75rem; }
+  .ab-strip > *:first-child { padding-left: 0; }
+  .ab-strip > *:not(:first-child):not(:last-child) { border-left: 1px solid var(--ab-gold-line); }
+  .ab-strip > *:last-child { justify-self: end; padding-right: 0; border-left: 1px solid var(--ab-gold-line); }
+  .ab-strip .btn { justify-self: end; width: auto; white-space: nowrap; }
+}
+
+/* 04 · principles ------------------------------------------- */
+.ab-principles { position: relative; overflow: hidden; isolation: isolate; }
+.ab-principles::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: url("/images/properties/palm-jumeirah-media-3-dtcm.avif") center / cover no-repeat;
+  filter: brightness(0.5) saturate(1.05);
+}
+.ab-principles::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(11,10,8,0.7) 0%, rgba(11,10,8,0.35) 45%, rgba(11,10,8,0.8) 100%);
+}
+.ab-cards { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.ab-card {
+  border: 1px solid var(--ab-gold-line);
+  border-radius: 10px;
+  background: rgba(11, 10, 8, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.ab-card-head { display: flex; align-items: center; gap: 0.9rem; }
+.ab-card-head span { font-family: var(--font-display); font-weight: 500; font-size: 1.4rem; color: var(--gold); line-height: 1; }
+.ab-card-head::after { content: ""; flex: 1; height: 1px; background: var(--ab-gold-line); }
+.ab-card h3 { margin-top: 0.9rem; font-size: 1.55rem; color: var(--ivory); }
+.ab-card p { margin-top: 0.5rem; font-size: 0.86rem; line-height: 1.6; color: var(--ivory-dim); }
+.ab-pullquote {
+  display: flex; align-items: center;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border-left: 1px solid var(--ab-gold-line);
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.1rem); line-height: 1.25;
+  color: var(--gold-bright);
+}
+@media (min-width: 560px) { .ab-cards { grid-template-columns: repeat(2, 1fr); } .ab-pullquote { grid-column: 1 / -1; padding-block: 1rem; } }
+@media (min-width: 960px) {
+  .ab-cards { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .ab-pullquote { grid-column: auto; padding-left: 2rem; }
+}
+
+/* 05 · the people ------------------------------------------- */
+.ab-people-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: stretch; }
+.ab-people-photo { margin: 0; background: var(--ink-2); overflow: hidden; border: 1px solid var(--ab-line); }
+.ab-people-photo img { width: 100%; height: 100%; min-height: 20rem; object-fit: cover; object-position: center top; display: block; }
+.ab-person { padding-block: 1.5rem; border-top: 1px solid var(--ab-gold-line); }
+.ab-person:first-child { border-top: 0; padding-top: 0; }
+.ab-person h3.ab-name { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.ab-role { margin-top: 0.3rem; font-size: 0.8rem; color: var(--ivory-dim); }
+.ab-tagline { margin-top: 0.9rem; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 1.9rem); line-height: 1.2; color: var(--ivory); }
+.ab-person p.ab-bio { margin-top: 0.8rem; font-size: 0.88rem; line-height: 1.65; color: var(--ivory-dim); }
+.ab-shared { padding-top: 1.25rem; border-top: 1px solid var(--ab-gold-line); font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; color: var(--gold); }
+@media (min-width: 800px) {
+  .ab-people-grid { grid-template-columns: 0.95fr 1fr; gap: 3rem; margin-top: 3rem; }
+  .ab-people-photo img { min-height: 100%; }
+}
+
+/* 06 · next chapter ------------------------------------------ */
+.ab-cta { position: relative; overflow: hidden; isolation: isolate; border-bottom: 0; }
+.ab-cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: url("/images/properties/dubai-marina-1560x10002.avif") center / cover no-repeat;
+}
+.ab-cta::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(11,10,8,0.88) 0%, rgba(11,10,8,0.55) 55%, rgba(11,10,8,0.25) 100%),
+              linear-gradient(180deg, rgba(11,10,8,0.5) 0%, rgba(11,10,8,0) 40%, rgba(11,10,8,0.7) 100%);
+}
+.ab-cta .ab-section-inner { padding-block: 1rem; }
+.ab-cta h2 { max-width: 12ch; }
+.ab-cta .ab-sub { color: var(--ivory); max-width: 26rem; }
+.ab-cta-btns { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.ab-cta-btns .btn { flex: 1 1 14rem; max-width: 18rem; justify-content: center; }
+.ab-contact-lines { margin-top: 2rem; display: grid; gap: 0.8rem; }
+.ab-contact-lines a { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.92rem; color: var(--ivory); }
+.ab-contact-lines a:hover { color: var(--gold); }
+.ab-contact-lines svg { flex: none; width: 1.1rem; height: 1.1rem; color: var(--gold); }
