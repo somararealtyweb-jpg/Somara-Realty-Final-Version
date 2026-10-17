@@ -291,7 +291,8 @@
           video.addEventListener("error", fallToImage);
           video.src = s.heroVideo;
           video.style.display = "block";
-          if (photo) photo.style.display = "none";
+          // The image never shows first: it stays hidden unless the video
+          // fails (see fallToImage above).
           var playPromise = video.play();
           if (playPromise && typeof playPromise.catch === "function") {
             playPromise.catch(fallToImage);
