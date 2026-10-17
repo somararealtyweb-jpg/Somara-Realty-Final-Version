@@ -133,12 +133,16 @@
           </div>
           <button type="submit" class="btn btn-primary">Search</button>
         </form> -->
-                <form id="heroSearchForm">
+        <form id="heroSearchForm" class="hero-search-compact">
           <div class="field">
             <label for="searchLocation">Location</label>
-            <input type="text" id="searchLocation" placeholder="Any location" autocomplete="off" />
-            <div class="autocomplete-list" id="searchLocationList"></div>
+            <select id="searchLocation">
+              <option value="">Any location</option>
+            </select>
           </div>
+          <!-- Developer and Property filters hidden for now. To bring them back,
+               delete the comment markers around this block (the search code in
+               js/main.js already supports them).
           <div class="field">
             <label for="searchDeveloper">Developer</label>
             <select id="searchDeveloper">
@@ -150,6 +154,7 @@
             <input type="text" id="searchProperty" placeholder="Any property" autocomplete="off" />
             <div class="autocomplete-list" id="searchPropertyList"></div>
           </div>
+          -->
           <div class="field">
             <label for="searchBudget">Budget (AED)</label>
             <select id="searchBudget">
@@ -302,6 +307,55 @@
 
       <div class="properties-grid" id="categoryGrid" style="margin-top:2rem;">
         <!-- Populated by js/main.js -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section mortgage-section" id="mortgage" aria-labelledby="mortgage-heading">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Mortgage Calculator</p>
+          <h2 id="mortgage-heading" style="margin-top:0.75rem">Plan your monthly payment</h2>
+        </div>
+      </div>
+      <p class="body-sm" style="max-width:38rem;">Enter a property price, your down payment, interest rate and loan term to see an estimate of what you would pay each month.</p>
+
+      <div class="mortgage-card" id="mortgageCalc">
+        <div class="mortgage-inputs">
+          <div class="field">
+            <label for="mcPrice">Property price (AED)</label>
+            <input type="text" id="mcPrice" inputmode="numeric" value="1,500,000" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="mcDownPct">Down payment <span class="mc-val" id="mcDownPctOut">20%</span></label>
+            <input type="range" id="mcDownPct" min="5" max="80" step="1" value="20" />
+            <p class="mc-hint">= <span id="mcDownAmt">AED 300,000</span></p>
+          </div>
+
+          <div class="field">
+            <label for="mcRate">Interest rate (% per year)</label>
+            <input type="number" id="mcRate" min="0" max="20" step="0.05" value="4.5" inputmode="decimal" />
+          </div>
+
+          <div class="field">
+            <label for="mcYears">Loan term <span class="mc-val" id="mcYearsOut">25 years</span></label>
+            <input type="range" id="mcYears" min="1" max="25" step="1" value="25" />
+          </div>
+        </div>
+
+        <div class="mortgage-result" aria-live="polite">
+          <p class="mc-label">Estimated monthly payment</p>
+          <p class="mc-monthly" id="mcMonthly">AED 0</p>
+          <dl class="mc-breakdown">
+            <div><dt>Loan amount</dt><dd id="mcLoan">AED 0</dd></div>
+            <div><dt>Total interest</dt><dd id="mcInterest">AED 0</dd></div>
+            <div><dt>Total cost (incl. down payment)</dt><dd id="mcTotal">AED 0</dd></div>
+          </dl>
+          <button type="button" class="btn btn-primary" id="mcConsultBtn">Talk to a mortgage consultant</button>
+          <p class="mc-note">Indicative estimate only. Actual rates, eligibility and down payment rules depend on the bank and your profile.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -466,7 +520,7 @@
 
   <div class="container footer-top">
     <div class="footer-brand">
-      <span class="logo">SOMARA REALTY</span>
+      <a href="/" class="logo" aria-label="Somara Realty home">SOMARA REALTY</a>
       <p class="body-sm" style="margin-top:1rem; max-width:22rem;">Relentless. By Choice. Built Through Adversity. Driven By Vision.</p>
     </div>
     <div class="footer-links-grid">
