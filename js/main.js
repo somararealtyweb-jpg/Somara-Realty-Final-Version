@@ -809,20 +809,46 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       });
   }
 
+  // Fills the Location dropdown (when the form uses a dropdown) with every
+  // location that has listings, plus how many each has.
+  function initLocationOptions() {
+    var sel = document.getElementById("searchLocation");
+    if (!sel || sel.tagName !== "SELECT") return;
+    var counts = {};
+    PROPERTIES.forEach(function (p) { if (p.location) counts[p.location] = (counts[p.location] || 0) + 1; });
+    Object.keys(counts)
+      .sort(function (a, b) { return a.localeCompare(b); })
+      .forEach(function (loc) {
+        var o = document.createElement("option");
+        o.value = loc;
+        o.textContent = loc + " (" + counts[loc] + ")";
+        sel.appendChild(o);
+      });
+  }
+
   function initSearch() {
     var form = document.getElementById("heroSearchForm");
     if (!form) return;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var location = document.getElementById("searchLocation").value.trim().toLowerCase();
-      var developer = document.getElementById("searchDeveloper").value;
-      var propName = document.getElementById("searchProperty").value.trim().toLowerCase();
-      var budget = document.getElementById("searchBudget").value;
+      // Each field is optional: if one is removed/commented out of the form,
+      // it is simply ignored.
+      function fieldVal(id) {
+        var el = document.getElementById(id);
+        return el ? String(el.value || "").trim() : "";
+      }
+      var locEl = document.getElementById("searchLocation");
+      var locIsSelect = !!locEl && locEl.tagName === "SELECT";
+      var location = fieldVal("searchLocation").toLowerCase();
+      var developer = fieldVal("searchDeveloper");
+      var propName = fieldVal("searchProperty").toLowerCase();
+      var budget = fieldVal("searchBudget");
 
       function run(skip) {
         return PROPERTIES.filter(function (p) {
-          var matchLocation = skip.location || !location || (p.location || "").toLowerCase().indexOf(location) !== -1;
+          var pLoc = (p.location || "").toLowerCase();
+          var matchLocation = skip.location || !location || (locIsSelect ? pLoc === location : pLoc.indexOf(location) !== -1);
           var matchDeveloper = skip.developer || !developer || p.developer === developer;
           var matchProperty = skip.property || !propName || (p.title || "").toLowerCase().indexOf(propName) !== -1;
           var matchBudget = skip.budget || !budget || budgetTierOf(p) === budget;
@@ -904,6 +930,70 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     var b2 = document.getElementById("clearSearchEmptyBtn");
     if (b1) b1.addEventListener("click", clearSearch);
     if (b2) b2.addEventListener("click", clearSearch);
+  }
+
+
+  /* -----------------------------------------------------
+     Mortgage calculator (section #mortgage on the homepage)
+     Standard monthly-instalment formula. Indicative only.
+  ----------------------------------------------------- */
+  function initMortgageCalculator() {
+    var root = document.getElementById("mortgageCalc");
+    if (!root) return;
+
+    var priceEl = document.getElementById("mcPrice");
+    var downPctEl = document.getElementById("mcDownPct");
+    var downPctOut = document.getElementById("mcDownPctOut");
+    var downAmtEl = document.getElementById("mcDownAmt");
+    var rateEl = document.getElementById("mcRate");
+    var yearsEl = document.getElementById("mcYears");
+    var yearsOut = document.getElementById("mcYearsOut");
+    var monthlyEl = document.getElementById("mcMonthly");
+    var loanEl = document.getElementById("mcLoan");
+    var interestEl = document.getElementById("mcInterest");
+    var totalEl = document.getElementById("mcTotal");
+    var ctaBtn = document.getElementById("mcConsultBtn");
+
+    function num(v) { return parseFloat(String(v).replace(/[^0-9.]/g, "")) || 0; }
+    function aed(n) { return "AED " + Math.round(n).toLocaleString("en-US"); }
+
+    function calc() {
+      var price = num(priceEl.value);
+      var pct = num(downPctEl.value);
+      var rate = num(rateEl.value);
+      var years = num(yearsEl.value);
+
+      var down = price * pct / 100;
+      var loan = Math.max(price - down, 0);
+      var n = years * 12;
+      var r = rate / 100 / 12;
+      var monthly = 0;
+      if (loan > 0 && n > 0) {
+        monthly = r === 0 ? loan / n : loan * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      }
+      var total = monthly * n;
+
+      downPctOut.textContent = pct + "%";
+      yearsOut.textContent = years + (years === 1 ? " year" : " years");
+      downAmtEl.textContent = aed(down);
+      monthlyEl.textContent = aed(monthly);
+      loanEl.textContent = aed(loan);
+      interestEl.textContent = aed(Math.max(total - loan, 0));
+      totalEl.textContent = aed(total + down);
+    }
+
+    // Price box: show thousands separators while typing, keep the caret sane.
+    priceEl.addEventListener("input", function () {
+      var digits = priceEl.value.replace(/[^0-9]/g, "");
+      priceEl.value = digits ? Number(digits).toLocaleString("en-US") : "";
+      calc();
+    });
+    [downPctEl, rateEl, yearsEl].forEach(function (el) { el.addEventListener("input", calc); });
+
+    if (ctaBtn) {
+      ctaBtn.addEventListener("click", function () { openConsultationModal("Mortgage Calculator"); });
+    }
+    calc();
   }
 
   /* -----------------------------------------------------
@@ -1560,6 +1650,7 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     initFirstVisitPopup();
     initContactForm();
     initStatsCounters();
+    initMortgageCalculator();
     loadContactInfo();
 
     var yearEl = document.getElementById("year");
@@ -1575,6 +1666,7 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
         renderPropertiesSection(PROPERTIES);
         initPropertiesViewMore();
         initDeveloperOptions();
+        initLocationOptions();
         initSearch();
         initLocationAutocomplete();
         initCategoryPills();
