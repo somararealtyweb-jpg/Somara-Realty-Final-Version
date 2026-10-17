@@ -1314,3 +1314,20 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
 @media (max-width: 640px) {
   .hero-content .body-lg { font-size: 1.05rem; line-height: 1.55; }
 }
+
+/* Oct 17 (3): popup form caption readability */
+.lead-modal-media-caption {
+  padding: 3.5rem 1.25rem 1.25rem;
+  background: linear-gradient(0deg, rgba(11,10,8,0.97) 0%, rgba(11,10,8,0.9) 45%, rgba(11,10,8,0) 100%);
+}
+.lead-modal-media-caption .logo,
+.lead-modal-media-caption .body-sm,
+.lead-modal-media-caption p {
+  color: var(--ivory);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.85);
+}
+.lead-modal-media-caption .body-sm,
+.lead-modal-media-caption p {
+  font-weight: 500;
+  line-height: 1.5;
+}
