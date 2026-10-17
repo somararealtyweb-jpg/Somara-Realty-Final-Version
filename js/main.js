@@ -175,6 +175,7 @@
     if (!grid) return;
     browseState.list = list;
     browseState.visible = 6;
+    grid.scrollLeft = 0; // phones: new list starts at the first card
     if (list.length === 0) {
       grid.innerHTML = emptyHTML;
       var w = document.getElementById("browseViewMoreWrap");
