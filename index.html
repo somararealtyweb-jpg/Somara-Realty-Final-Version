@@ -25,6 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/styles.css" />
   <meta name="google-site-verification" content="qRBqcxrDloYZE4jG4JwjVEOsg1qhoG0nGX3E5rW4u58" />
+  <link rel="preload" href="/content/hero.json" as="fetch" crossorigin="anonymous" />
 </head>
 <body>
 
@@ -77,9 +78,8 @@
     <div class="hero-bg" aria-hidden="true">
       <div class="grid"></div>
       <div class="glow"></div>
-      <img id="heroPhoto" class="hero-photo" src="/images/hero/hero-bg.jpg" alt=""
-           onerror="this.style.display='none'" />
-    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline poster="/images/hero/dubai_december-12-2025_12374.webp" style="display:none;"></video>
+      <img id="heroPhoto" class="hero-photo" alt="" style="display:none;" />
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto"></video>
       <div class="fade"></div>
       <div class="top-scrim"></div>
     </div>
@@ -88,7 +88,7 @@
       <div class="hero-content">
         <p class="eyebrow">Somara Realty, Dubai</p>
         <h1><span id="heroLine1">Some are born into opportunity.</span><br><span class="gold" id="heroLine2">Somara Realty builds it.</span></h1>
-        <p class="body-lg" id="heroSubtext">We built Somara from scratch, one hard earned client at a time. Now we bring that same grit to your Dubai property search, with straight answers, honest numbers and no pressure.</p>
+        <p class="body-lg" id="heroSubtext">We built Somara from scratch, one hard-earned client at a time. Now we bring that same grit to your Dubai property search, with straight answers, honest numbers and no pressure.</p>
         <div class="hero-ctas">
           <a href="/contact/" class="btn btn-primary js-open-consultation">Book a Consultation</a>
           <a href="/about/" class="btn btn-outline">Our Story</a>
