@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/about.css" />
 </head>
 <body>
 
@@ -66,74 +67,174 @@
   </div>
 </div>
 
-<main id="main-content">
+<main id="main-content" class="ab">
 
-  <section class="page-hero about-hero-bg">
-    <div class="container" style="max-width:48rem;">
-      <span class="eyebrow">About Somara Realty</span>
-      <h1 id="aboutQuote">&ldquo;Some people are born into opportunity. I had to build mine.&rdquo;</h1>
-      <p class="body-lg" id="aboutStory">Somara Realty exists because its founder, Amit Thakur, turned repeated setbacks, in business, in sales, in life, into a method rather than a memory. No capital, no safety net, no clear path. Just the decision, made over and over, to keep showing up. The brand carries that same posture into every client relationship: substance over flash, and trust earned rather than assumed.</p>
+  <!-- 01 · THE STORY -->
+  <section class="ab-hero" aria-labelledby="ab-h1">
+    <div class="ab-hero-text">
+      <p class="ab-eyebrow">01 / The story behind Somara</p>
+      <h1 id="ab-h1">Relentless.<br>By Choice.</h1>
+      <blockquote class="ab-quote">&ldquo;Some people are born into opportunity. I had to build mine.&rdquo;</blockquote>
+      <p class="ab-lead">For Amit Thakur, setbacks became a starting point. Across India, Canada and Dubai, that resolve shaped a personal approach to real estate: clear advice, lasting relationships and the conviction to keep moving forward.</p>
+      <div class="ab-follow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c0-3.6 2.9-5.8 6.5-5.8s6.5 2.2 6.5 5.8"/><circle cx="17.5" cy="9" r="2.4"/><path d="M17 13.4c2.6.2 4.5 2 4.5 4.8"/></svg>
+        <div><strong>30K+ social following</strong><span>A journey shared beyond real estate.</span></div>
+      </div>
+      <a href="#ab-markets" class="ab-link">Discover our journey <span aria-hidden="true">&darr;</span></a>
     </div>
+    <figure class="ab-hero-photo">
+      <img src="/images/about/amit-hero.jpg" alt="Amit Thakur, Founder and CEO of Somara Realty" onerror="this.style.display='none'" />
+      <figcaption>Amit Thakur<br>Founder &amp; CEO</figcaption>
+    </figure>
   </section>
 
-  <section class="section">
-    <div class="container" style="display:grid; gap:3rem; grid-template-columns:1fr;">
-      <div style="display:grid; gap:3rem; grid-template-columns:1fr 1fr;" class="responsive-2col">
+  <!-- 02 · THREE MARKETS -->
+  <section class="ab-section" id="ab-markets" aria-labelledby="ab-markets-h">
+    <div class="ab-wrap">
+      <p class="ab-eyebrow">02 / Experience across markets</p>
+      <div class="ab-markets-head">
         <div>
-          <h2>Our promise</h2>
-          <p class="body-lg" id="aboutPromise" style="margin-top:1rem; color:var(--gold);">Your setbacks don't define you. What you do next does.</p>
+          <h2 class="ab-h2" id="ab-markets-h">Three markets. One standard.</h2>
+          <p class="ab-sub">From India. Through Canada. Built in Dubai.</p>
         </div>
+        <p class="ab-aside">Deal experience across markets.</p>
+      </div>
+
+      <div class="ab-markets-grid">
+        <article class="ab-market">
+          <div class="ab-market-top">
+            <div class="ab-market-media"><img src="/images/about/market-india.jpg" alt="India skyline at dusk" loading="lazy" onerror="this.style.display='none'" /></div>
+            <span class="ab-node" aria-hidden="true">01</span>
+          </div>
+          <div class="ab-market-body">
+            <p class="ab-market-label">India</p>
+            <p class="ab-market-num">&#8377; 75 Cr</p>
+            <p class="ab-market-what">Net sales closed</p>
+            <p class="ab-market-note">Where the journey began.</p>
+          </div>
+        </article>
+        <article class="ab-market">
+          <div class="ab-market-top">
+            <div class="ab-market-media"><img src="/images/about/market-canada.jpg" alt="Toronto skyline at dusk" loading="lazy" onerror="this.style.display='none'" /></div>
+            <span class="ab-node" aria-hidden="true">02</span>
+          </div>
+          <div class="ab-market-body">
+            <p class="ab-market-label">Canada</p>
+            <p class="ab-market-num">CAD 12M</p>
+            <p class="ab-market-what">Sales value</p>
+            <p class="ab-market-note">A broader perspective.</p>
+          </div>
+        </article>
+        <article class="ab-market">
+          <div class="ab-market-top">
+            <div class="ab-market-media"><img src="/images/about/market-dubai.jpg" alt="Dubai skyline with Burj Khalifa at dusk" loading="lazy" onerror="this.style.display='none'" /></div>
+            <span class="ab-node" aria-hidden="true">03</span>
+          </div>
+          <div class="ab-market-body">
+            <p class="ab-market-label">Dubai</p>
+            <p class="ab-market-num">AED 85M</p>
+            <p class="ab-market-what">Sales value</p>
+            <p class="ab-market-note">Our perspective, brought home.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · THE CLIENT EXPERIENCE -->
+  <section class="ab-section" aria-labelledby="ab-client-h">
+    <div class="ab-wrap">
+      <div class="ab-client-grid">
         <div>
-          <h2>How we work</h2>
-          <p class="body-lg" id="aboutHowWeWork" style="margin-top:1rem;">We advise the way we'd want to be advised: with a long-term view, straight answers about risk and timing, and no pressure toward a deal that doesn't serve you.</p>
+          <p class="ab-eyebrow">03 / The client experience</p>
+          <h2 class="ab-h2" id="ab-client-h">More than property.<br>A partnership built on trust.</h2>
+          <p class="ab-sub" style="max-width:30rem;">Off-plan, ready homes and investment advisory across Dubai. Your objectives shape every recommendation.</p>
+          <div class="ab-client-photo"><img src="/images/about/client-experience.jpg" alt="Living room with a view of the Dubai skyline" loading="lazy" onerror="this.style.display='none'" /></div>
+        </div>
+        <div class="ab-points">
+          <div class="ab-point">
+            <span class="ab-point-num">01</span>
+            <div><h3>Local knowledge.<br>A long-term view.</h3><p>Community insight and considered opportunities, with your next chapter in mind.</p></div>
+          </div>
+          <div class="ab-point">
+            <span class="ab-point-num">02</span>
+            <div><h3>Clear numbers.<br>Honest timelines.</h3><p>Understand the payment structure, risks and timing before you decide.</p></div>
+          </div>
+          <div class="ab-point">
+            <span class="ab-point-num">03</span>
+            <div><h3>One contact.<br>From search to keys.</h3><p>Dedicated guidance and consistent communication through every step.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-strip">
+        <span class="ab-strip-tag">Buy / Rent / Invest</span>
+        <span class="ab-strip-types">Apartments &bull; Villas &bull; Townhouses &bull; Penthouses</span>
+        <span class="ab-strip-range">AED 1M &ndash; 10M+</span>
+        <a href="/contact/" class="btn btn-primary js-open-consultation">Let&rsquo;s talk about your next move <span aria-hidden="true">&nearr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · PRINCIPLES -->
+  <section class="ab-section ab-principles" aria-labelledby="ab-principles-h">
+    <div class="ab-wrap">
+      <p class="ab-eyebrow">04 / Our principles</p>
+      <h2 class="ab-h2" id="ab-principles-h">What we hold<br>ourselves to.</h2>
+      <p class="ab-sub" style="max-width:26rem;">The principles behind every recommendation, relationship and next move.</p>
+
+      <div class="ab-cards">
+        <div class="ab-card"><div class="ab-card-head"><span>01</span></div><h3>Resilience</h3><p>We adapt, find a way forward and stay committed when the path becomes complex.</p></div>
+        <div class="ab-card"><div class="ab-card-head"><span>02</span></div><h3>Trust</h3><p>We earn confidence through honest advice, clear communication and promises kept.</p></div>
+        <div class="ab-card"><div class="ab-card-head"><span>03</span></div><h3>Vision</h3><p>We look beyond the immediate transaction to the life and long-term goals behind it.</p></div>
+        <div class="ab-card"><div class="ab-card-head"><span>04</span></div><h3>Excellence</h3><p>Careful preparation, thoughtful recommendations and attention to the details that matter.</p></div>
+        <div class="ab-card"><div class="ab-card-head"><span>05</span></div><h3>Integrity</h3><p>We put your interests first, including when the right advice is to wait.</p></div>
+        <p class="ab-pullquote">&ldquo;Your setbacks don&rsquo;t define you. What you do next does.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · THE PEOPLE -->
+  <section class="ab-section" aria-labelledby="ab-people-h">
+    <div class="ab-wrap">
+      <p class="ab-eyebrow">05 / The people</p>
+      <h2 class="ab-h2" id="ab-people-h">The visionaries behind<br>Somara Realty</h2>
+
+      <div class="ab-people-grid">
+        <figure class="ab-people-photo"><img src="/images/about/amit-portrait.jpg" alt="Amit Thakur, Founder and CEO, at his desk" loading="lazy" onerror="this.style.display='none'" /></figure>
+        <div>
+          <div class="ab-person">
+            <h3 class="ab-name">Amit Thakur</h3>
+            <p class="ab-role">Founder &amp; CEO</p>
+            <p class="ab-tagline">Vision. Leadership. Growth.</p>
+            <p class="ab-bio">Sets Somara Realty&rsquo;s direction, leads business growth and builds strategic partnerships. He guides the team and defines the standards behind the firm&rsquo;s property advice and client relationships.</p>
+          </div>
+          <div class="ab-person">
+            <h3 class="ab-name">Gurpreet Singh</h3>
+            <p class="ab-role">Founder &amp; COO</p>
+            <p class="ab-tagline">Operations. People. Delivery.</p>
+            <p class="ab-bio">Leads day-to-day operations, aligns teams and oversees the processes behind each transaction. From internal coordination to service delivery, he keeps the business organised, accountable and consistent.</p>
+          </div>
+          <p class="ab-shared">A shared standard. Complementary strengths.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section about-values-bg" style="border-top:1px solid var(--ink-3); border-bottom:1px solid var(--ink-3);">
-    <div class="container">
-      <h2>What we hold ourselves to</h2>
-      <div class="about-values" id="aboutValuesGrid">
-        <div class="card-outlined"><h3>Resilience</h3><p class="body-sm" style="margin-top:0.5rem">We don't stop. We adapt and grow.</p></div>
-        <div class="card-outlined"><h3>Trust</h3><p class="body-sm" style="margin-top:0.5rem">Honesty builds lasting relationships.</p></div>
-        <div class="card-outlined"><h3>Vision</h3><p class="body-sm" style="margin-top:0.5rem">We see opportunity where others don't.</p></div>
-        <div class="card-outlined"><h3>Excellence</h3><p class="body-sm" style="margin-top:0.5rem">We deliver beyond expectations.</p></div>
-        <div class="card-outlined"><h3>Integrity</h3><p class="body-sm" style="margin-top:0.5rem">We do the right thing, always.</p></div>
+  <!-- 06 · NEXT CHAPTER -->
+  <section class="ab-section ab-cta" aria-labelledby="ab-cta-h">
+    <div class="ab-wrap ab-section-inner">
+      <p class="ab-eyebrow">06 / Your next chapter</p>
+      <h2 class="ab-h2" id="ab-cta-h">Let&rsquo;s plan your next move.</h2>
+      <p class="ab-sub">A home. An investment. A new beginning.<br>Start with a conversation, not a pitch.</p>
+      <div class="ab-cta-btns">
+        <a href="/contact/" class="btn btn-primary js-open-consultation">Book a free consultation <span aria-hidden="true">&nearr;</span></a>
+        <a href="#" id="footerWhatsapp" class="btn btn-outline" target="_blank" rel="noopener noreferrer" style="display:none;">WhatsApp us <span aria-hidden="true">&nearr;</span></a>
       </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="team-heading">
-    <div class="container">
-      <p class="eyebrow">Leadership</p>
-      <h2 id="team-heading" style="margin-top:0.75rem">The partners behind Somara Realty</h2>
-
-      <div class="realtor-grid realtor-grid--pair">
-        <div class="card-outlined realtor-card">
-          <div class="realtor-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>Amit Thakur</h3>
-          <p class="body-sm realtor-role">Founder &amp; CEO</p>
-          <p class="body-sm" style="margin-top:0.75rem;">Turned early setbacks into a disciplined approach to Dubai real estate. Leads strategy and client relationships.</p>
-        </div>
-        <div class="card-outlined realtor-card">
-          <div class="realtor-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>Gurpreet Singh</h3>
-          <p class="body-sm realtor-role">Founder &amp; COO</p>
-          <p class="body-sm" style="margin-top:0.75rem;">Focuses on off-plan opportunities and investor relationships across Dubai's growth corridors.</p>
-        </div>
+      <div class="ab-contact-lines">
+        <a href="mailto:info@somararealty.ae" id="contactEmail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>info@somararealty.ae</a>
+        <a href="tel:+971557170525" id="contactPhone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+971 55 717 0525</a>
       </div>
-      <!-- <p class="body-sm" style="margin-top:1.5rem;">Placeholder bios, to be finalized with the team.</p> -->
-    </div>
-  </section>
-
-  <section class="consultation">
-    <div class="container">
-      <div>
-        <h2>Ready to talk?</h2>
-        <p class="body-lg" style="margin-top:0.5rem; max-width:28rem;">Whether you're buying, selling, or just weighing options, start with a conversation, not a pitch.</p>
-      </div>
-      <a href="/contact/" class="btn btn-primary">Book a Consultation</a>
     </div>
   </section>
 
