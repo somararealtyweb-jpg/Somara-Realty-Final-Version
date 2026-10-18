@@ -36,6 +36,10 @@ collections:
             required: false
             hint: "In Google Maps: search your address → Share → the 'Embed a map' tab (not 'Copy link') → copy ONLY the URL inside src=\"...\" and paste it here"
           - {label: "Instagram URL", name: "instagramUrl", widget: "string", required: false}
+          - {label: "Amit Thakur Instagram URL", name: "amitInstagramUrl", widget: "string", required: false, hint: "Shows an Instagram icon next to his name on the Home and About pages"}
+          - {label: "Amit Thakur Facebook URL", name: "amitFacebookUrl", widget: "string", required: false}
+          - {label: "Amit Thakur YouTube URL", name: "amitYoutubeUrl", widget: "string", required: false}
+          - {label: "Amit Thakur LinkedIn URL", name: "amitLinkedinUrl", widget: "string", required: false}
 
       - file: "content/about-content.json"
         label: "About Page"
