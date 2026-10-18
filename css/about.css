@@ -258,3 +258,17 @@
 .ab-contact-lines a { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.92rem; color: var(--ivory); }
 .ab-contact-lines a:hover { color: var(--gold); }
 .ab-contact-lines svg { flex: none; width: 1.1rem; height: 1.1rem; color: var(--gold); }
+
+/* social links beside founder names (hidden until a URL is set in Site Settings) */
+.ab-social { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.ab-social[hidden], .ab-social a[hidden] { display: none; }
+.ab-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  border: 1px solid var(--ab-gold-line); color: var(--gold);
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+}
+.ab-social a:hover { background: rgba(198, 161, 100, 0.12); border-color: var(--gold); color: var(--gold-bright); }
+.ab-social svg { width: 1rem; height: 1rem; }
+.ab-hero-photo figcaption .ab-social { margin-top: 0.6rem; pointer-events: auto; }
+.ab-hero-photo figcaption .ab-social a { background: rgba(11, 10, 8, 0.55); border-color: rgba(198, 161, 100, 0.7); }
