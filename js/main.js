@@ -356,6 +356,10 @@
             var el = document.getElementById(id);
             if (el) { el.href = "tel:" + c.phone.replace(/\s+/g, ""); el.textContent = c.phone; }
           });
+          var callBtn = document.getElementById("ctaCall");
+          var callNum = document.getElementById("ctaCallNumber");
+          if (callBtn) callBtn.href = "tel:" + c.phone.replace(/\s+/g, "");
+          if (callNum) callNum.textContent = c.phone;
         }
 
         var addressEl = document.getElementById("contactAddress");
@@ -1717,6 +1721,34 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
   /* -----------------------------------------------------
      Init
   ----------------------------------------------------- */
+  /* -----------------------------------------------------
+     Email links. They are normal mailto: links (work on phones and on
+     computers with a mail app). On a computer with NO mail app set up the
+     click does nothing, so if nothing opened we fall back to a Gmail
+     compose window with the address filled in.
+  ----------------------------------------------------- */
+  function initMailtoFallback() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+      if (!a) return;
+      var to = a.getAttribute("href").replace(/^mailto:/i, "").split("?")[0];
+      if (!to) return;
+      var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (mobile) return; // phones always have a mail app
+      var left = false;
+      function onBlur() { left = true; }
+      window.addEventListener("blur", onBlur);
+      document.addEventListener("visibilitychange", onBlur);
+      setTimeout(function () {
+        window.removeEventListener("blur", onBlur);
+        document.removeEventListener("visibilitychange", onBlur);
+        if (!left && document.hasFocus()) {
+          window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(to), "_blank", "noopener");
+        }
+      }, 1200);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHeader();
     initMobileMenu();
@@ -1727,6 +1759,7 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     initStatsCounters();
     initMortgageCalculator();
     loadContactInfo();
+    initMailtoFallback();
 
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
