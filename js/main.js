@@ -981,6 +981,8 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     var downPctOut = document.getElementById("mcDownPctOut");
     var downAmtEl = document.getElementById("mcDownAmt");
     var rateEl = document.getElementById("mcRate");
+    var rateOut = document.getElementById("mcRateOut");
+    var priceRange = document.getElementById("mcPriceRange");
     var yearsEl = document.getElementById("mcYears");
     var yearsOut = document.getElementById("mcYearsOut");
     var monthlyEl = document.getElementById("mcMonthly");
@@ -1024,6 +1026,7 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       var otherFees = regFee + agencyFee + trusteeFee;
       var cash = down + dld + otherFees;
 
+      if (rateOut) rateOut.textContent = rate.toFixed(2) + "%";
       downPctOut.textContent = pct + "%";
       yearsOut.textContent = years + (years === 1 ? " year" : " years");
       downAmtEl.textContent = aed(down);
@@ -1041,8 +1044,15 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     priceEl.addEventListener("input", function () {
       var digits = priceEl.value.replace(/[^0-9]/g, "");
       priceEl.value = digits ? Number(digits).toLocaleString("en-US") : "";
+      if (priceRange && digits) priceRange.value = digits; // slider clamps to its own range
       calc();
     });
+    if (priceRange) {
+      priceRange.addEventListener("input", function () {
+        priceEl.value = Number(priceRange.value).toLocaleString("en-US");
+        calc();
+      });
+    }
     [downPctEl, rateEl, yearsEl].forEach(function (el) { el.addEventListener("input", calc); });
 
     if (ctaBtn) {
