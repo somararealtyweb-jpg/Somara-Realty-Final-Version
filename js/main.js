@@ -360,9 +360,19 @@
 
         var addressEl = document.getElementById("contactAddress");
         if (addressEl && (c.addressLine1 || c.city)) {
-          var line1 = [c.addressLine1, c.addressLine2].filter(Boolean).join(" ");
+          var line1 = [c.addressLine1, c.addressLine2].filter(Boolean).join(", ");
           var line2 = [c.city, c.country].filter(Boolean).join(", ");
           addressEl.innerHTML = (line1 ? line1 + "<br>" : "") + line2;
+        }
+
+        // Footer "Visit Us" line on every page: full address from Site Settings.
+        var fullAddress = [c.addressLine1, c.addressLine2, c.city, c.country].filter(Boolean).join(", ");
+        if (fullAddress) {
+          document.querySelectorAll("h3").forEach(function (h) {
+            if (h.textContent.trim().toLowerCase() === "visit us" && h.nextElementSibling) {
+              h.nextElementSibling.textContent = fullAddress;
+            }
+          });
         }
 
         var mapWrap = document.getElementById("mapWrap");
