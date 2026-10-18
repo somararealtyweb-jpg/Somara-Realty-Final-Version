@@ -347,7 +347,7 @@
         if (c.instagramUrl) {
           ["footerInstagram", "ctaInstagram", "instaFollowLink"].forEach(function (id) {
             var el = document.getElementById(id);
-            if (el) { el.href = c.instagramUrl; el.style.display = ""; }
+            if (el) { el.href = c.instagramUrl; el.style.display = (id === "ctaInstagram") ? "flex" : ""; }
           });
         }
 
