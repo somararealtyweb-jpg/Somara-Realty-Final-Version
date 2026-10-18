@@ -369,6 +369,17 @@
           addressEl.innerHTML = (line1 ? line1 + "<br>" : "") + line2;
         }
 
+        // Founder social links (Amit Thakur): shown only once a URL is set.
+        var amitSocial = { instagram: c.amitInstagramUrl, facebook: c.amitFacebookUrl, youtube: c.amitYoutubeUrl, linkedin: c.amitLinkedinUrl };
+        document.querySelectorAll("[data-amit-social]").forEach(function (el) {
+          var url = amitSocial[el.getAttribute("data-amit-social")];
+          if (url) {
+            el.href = url;
+            el.hidden = false;
+            if (el.parentElement) el.parentElement.hidden = false;
+          }
+        });
+
         // Footer "Visit Us" line on every page: full address from Site Settings.
         var fullAddress = [c.addressLine1, c.addressLine2, c.city, c.country].filter(Boolean).join(", ");
         if (fullAddress) {
