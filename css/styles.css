@@ -1331,3 +1331,11 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
   font-weight: 500;
   line-height: 1.5;
 }
+/* Oct 18: mortgage calculator, buying costs */
+.mc-breakdown > div.mc-total-row { border-top-color: rgba(198, 161, 100, 0.45); padding-top: 0.9rem; }
+.mc-breakdown > div.mc-total-row dt { color: var(--ivory); font-weight: 500; }
+.mc-breakdown > div.mc-total-row dd { color: var(--gold); font-size: 1.15rem; font-weight: 600; }
+.mc-hint #mcDownMin { display: inline-block; }
+.mc-breakdown dd { white-space: nowrap; }
+.mc-breakdown dt { min-width: 0; }
+.mortgage-result .btn { white-space: normal; text-align: center; padding-inline: 1rem; }
