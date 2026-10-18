@@ -204,7 +204,8 @@
         "Gym",
         "Kids' play area",
         "Theatre"
-      ]
+      ],
+      "image": "/images/properties/p11.jpg"
     },
     {
       "id": "p12",
@@ -216,7 +217,8 @@
       "price": 1968000,
       "paymentPlan": "30/70%",
       "tag": "",
-      "description": "Viewz, a Danube development in JLT (Jumeirah Lake Towers). Starting from AED 1,968,000. Handover: Q2 2027. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Viewz, a Danube development in JLT (Jumeirah Lake Towers). Starting from AED 1,968,000. Handover: Q2 2027. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p12.jpg"
     },
     {
       "id": "p13",
@@ -236,7 +238,8 @@
         "Multi-purpose room",
         "Landscaped areas",
         "BBQ area"
-      ]
+      ],
+      "image": "/images/properties/p13.jpg"
     },
     {
       "id": "p14",
@@ -256,7 +259,8 @@
         "Restaurants",
         "Retail",
         "Kids' play area"
-      ]
+      ],
+      "image": "/images/properties/p14.jpg"
     },
     {
       "id": "p15",
@@ -268,7 +272,8 @@
       "price": 1397000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Elo Damac, a DAMAC development in Damac Hills 2. Starting from AED 1,397,000. Handover: Q4 2026. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Elo Damac, a DAMAC development in Damac Hills 2. Starting from AED 1,397,000. Handover: Q4 2026. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p15.jpg"
     },
     {
       "id": "p16",
@@ -280,7 +285,8 @@
       "price": 2903000,
       "paymentPlan": "80/20%",
       "tag": "",
-      "description": "Golf Hillside, a Emaar development in Dubai Hills. Starting from AED 2,903,000. Handover: Q4 2027. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Golf Hillside, a Emaar development in Dubai Hills. Starting from AED 2,903,000. Handover: Q4 2027. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p16.jpg"
     },
     {
       "id": "p17",
@@ -292,7 +298,8 @@
       "price": 856000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Flare, a Binghatti development in JVT (Jumeirah Village Triangle). Starting from AED 856,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Flare, a Binghatti development in JVT (Jumeirah Village Triangle). Starting from AED 856,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p17.jpg"
     },
     {
       "id": "p18",
@@ -304,7 +311,8 @@
       "price": 21904000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "Cavalli Couture, a DAMAC development in Safa Park. Starting from AED 21,904,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Cavalli Couture, a DAMAC development in Safa Park. Starting from AED 21,904,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p18.jpg"
     },
     {
       "id": "p19",
@@ -316,7 +324,8 @@
       "price": 2496000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Damac Lagoons Views Phase 2, a DAMAC development in Damac Lagoons. Starting from AED 2,496,000. Handover: Q2 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Damac Lagoons Views Phase 2, a DAMAC development in Damac Lagoons. Starting from AED 2,496,000. Handover: Q2 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p19.jpg"
     },
     {
       "id": "p20",
@@ -328,7 +337,8 @@
       "price": 8400000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Burj Binghatti Jacob and Co Residences, a Binghatti development in Business Bay. Starting from AED 8,400,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Burj Binghatti Jacob and Co Residences, a Binghatti development in Business Bay. Starting from AED 8,400,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p20.jpg"
     },
     {
       "id": "p21",
@@ -340,7 +350,8 @@
       "price": 1082000,
       "paymentPlan": "30/70%",
       "tag": "",
-      "description": "Beach Oasis 1 and 2, a Azizi development in Dubai Studio City. Starting from AED 1,082,000. Handover: Q1 2027. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Beach Oasis 1 and 2, a Azizi development in Dubai Studio City. Starting from AED 1,082,000. Handover: Q1 2027. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p21.jpg"
     },
     {
       "id": "p22",
@@ -352,7 +363,8 @@
       "price": 11500000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Mercedes-Benz Places by Binghatti, a Binghatti development in Downtown Dubai. Starting from AED 11,500,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Mercedes-Benz Places by Binghatti, a Binghatti development in Downtown Dubai. Starting from AED 11,500,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p22.jpg"
     },
     {
       "id": "p23",
@@ -364,7 +376,8 @@
       "price": 2857000,
       "paymentPlan": "80/20%",
       "tag": "",
-      "description": "Mangrove, a Emaar development in Dubai Creek Harbour. Starting from AED 2,857,000. Handover: Q3 2026. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Mangrove, a Emaar development in Dubai Creek Harbour. Starting from AED 2,857,000. Handover: Q3 2026. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p23.jpg"
     },
     {
       "id": "p24",
@@ -376,7 +389,8 @@
       "price": 2613000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Binghatti Ghost, a Binghatti development in Al Jaddaf. Starting from AED 2,613,000. Handover: Q4 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Ghost, a Binghatti development in Al Jaddaf. Starting from AED 2,613,000. Handover: Q4 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p24.jpg"
     },
     {
       "id": "p25",
@@ -388,7 +402,8 @@
       "price": 2269000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "340 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 2,269,000. Handover: Q2 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "340 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 2,269,000. Handover: Q2 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p25.jpg"
     },
     {
       "id": "p26",
@@ -400,7 +415,8 @@
       "price": 3263000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Safa Two de Grisogono, a DAMAC development in Business Bay. Starting from AED 3,263,000. Handover: Q2 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Safa Two de Grisogono, a DAMAC development in Business Bay. Starting from AED 3,263,000. Handover: Q2 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p26.jpg"
     },
     {
       "id": "p27",
@@ -412,7 +428,8 @@
       "price": 1650000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Binghatti Phantom, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,650,000. Handover: Q3 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Phantom, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,650,000. Handover: Q3 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p27.jpg"
     },
     {
       "id": "p28",
@@ -424,7 +441,8 @@
       "price": 1580000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Azizi Wares, a Azizi development in Jebel Ali Freezone Extension. Starting from AED 1,580,000. Handover: Q1 2028. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Wares, a Azizi development in Jebel Ali Freezone Extension. Starting from AED 1,580,000. Handover: Q1 2028. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p28.jpg"
     },
     {
       "id": "p29",
@@ -436,7 +454,8 @@
       "price": 1475000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Aurora by Binghatti, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,475,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Aurora by Binghatti, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,475,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p29.jpg"
     },
     {
       "id": "p30",
@@ -448,7 +467,8 @@
       "price": 3315000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "One River Point, a Ellington development in Business Bay. Starting from AED 3,315,000. Handover: Q3 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "One River Point, a Ellington development in Business Bay. Starting from AED 3,315,000. Handover: Q3 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p30.jpg"
     },
     {
       "id": "p31",
@@ -460,7 +480,8 @@
       "price": 2828000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "Canal Heights, a DAMAC development in Business Bay. Starting from AED 2,828,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Canal Heights, a DAMAC development in Business Bay. Starting from AED 2,828,000. Handover: Q2 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p31.jpg"
     },
     {
       "id": "p32",
@@ -472,7 +493,8 @@
       "price": 829000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Azizi David, a Azizi development in Al Jaddaf. Starting from AED 829,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi David, a Azizi development in Al Jaddaf. Starting from AED 829,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p32.jpg"
     },
     {
       "id": "p33",
@@ -484,7 +506,8 @@
       "price": 1249000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Luxuria, a Binghatti development in JVT (Jumeirah Village Triangle). Starting from AED 1,249,000. Handover: Q3 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Luxuria, a Binghatti development in JVT (Jumeirah Village Triangle). Starting from AED 1,249,000. Handover: Q3 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p33.jpg"
     },
     {
       "id": "p34",
@@ -496,7 +519,8 @@
       "price": 1876000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Riviera 65, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,876,000. Handover: Q1 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera 65, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,876,000. Handover: Q1 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p34.jpg"
     },
     {
       "id": "p35",
@@ -508,7 +532,8 @@
       "price": 2000000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Aquarise, a Binghatti development in Business Bay. Starting from AED 2,000,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Aquarise, a Binghatti development in Business Bay. Starting from AED 2,000,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p35.jpg"
     },
     {
       "id": "p36",
@@ -520,7 +545,8 @@
       "price": 1327000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Elo 2 and 3 Damac, a DAMAC development in Damac Hills 2. Starting from AED 1,327,000. Handover: Q3 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Elo 2 and 3 Damac, a DAMAC development in Damac Hills 2. Starting from AED 1,327,000. Handover: Q3 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p36.jpg"
     },
     {
       "id": "p37",
@@ -532,7 +558,8 @@
       "price": 57231000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Orla Dorchester Collection, a Omniyat development in Palm Jumeirah. Starting from AED 57,231,000. Handover: Q4 2026. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Orla Dorchester Collection, a Omniyat development in Palm Jumeirah. Starting from AED 57,231,000. Handover: Q4 2026. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p37.jpg"
     },
     {
       "id": "p38",
@@ -544,7 +571,8 @@
       "price": 3785000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Cedar, a Emaar development in Dubai Creek Harbour. Starting from AED 3,785,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Cedar, a Emaar development in Dubai Creek Harbour. Starting from AED 3,785,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p38.jpg"
     },
     {
       "id": "p39",
@@ -556,7 +584,8 @@
       "price": 1114000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Azizi Ruby, a Azizi development in JVC (Jumeirah Village Circle). Starting from AED 1,114,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Ruby, a Azizi development in JVC (Jumeirah Village Circle). Starting from AED 1,114,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p39.jpg"
     },
     {
       "id": "p40",
@@ -568,7 +597,8 @@
       "price": 1173000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Opalz, a Danube development in Dubai Science Park. Starting from AED 1,173,000. Handover: Q3 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Opalz, a Danube development in Dubai Science Park. Starting from AED 1,173,000. Handover: Q3 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p40.jpg"
     },
     {
       "id": "p41",
@@ -580,7 +610,8 @@
       "price": 2575000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "One by Binghatti, a Binghatti development in Business Bay. Starting from AED 2,575,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "One by Binghatti, a Binghatti development in Business Bay. Starting from AED 2,575,000. Handover: Q2 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p41.jpg"
     },
     {
       "id": "p42",
@@ -592,7 +623,8 @@
       "price": 1325000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Elitz 2, a Danube development in JVC (Jumeirah Village Circle). Starting from AED 1,325,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Elitz 2, a Danube development in JVC (Jumeirah Village Circle). Starting from AED 1,325,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p42.jpg"
     },
     {
       "id": "p43",
@@ -604,7 +636,8 @@
       "price": 13395000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Skyblade, a Binghatti development in Downtown Dubai. Starting from AED 13,395,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Skyblade, a Binghatti development in Downtown Dubai. Starting from AED 13,395,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p43.jpg"
     },
     {
       "id": "p44",
@@ -616,7 +649,8 @@
       "price": 1319000,
       "paymentPlan": "20/80%",
       "tag": "",
-      "description": "Riviera 58, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,319,000. Handover: Q3 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera 58, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,319,000. Handover: Q3 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p44.jpg"
     },
     {
       "id": "p45",
@@ -628,7 +662,8 @@
       "price": 3457000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "360 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 3,457,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "360 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 3,457,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p45.jpg"
     },
     {
       "id": "p46",
@@ -640,7 +675,8 @@
       "price": 2881000,
       "paymentPlan": "30/70%",
       "tag": "",
-      "description": "Riviera Rêve, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 2,881,000. Handover: Q3 2026. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera Rêve, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 2,881,000. Handover: Q3 2026. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p46.jpg"
     },
     {
       "id": "p47",
@@ -652,7 +688,8 @@
       "price": 2001000,
       "paymentPlan": "20/80%",
       "tag": "",
-      "description": "Sobha Solis, a Sobha development in Dubai Motor City. Starting from AED 2,001,000. Handover: Q4 2027. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Sobha Solis, a Sobha development in Dubai Motor City. Starting from AED 2,001,000. Handover: Q4 2027. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p47.jpg"
     },
     {
       "id": "p48",
@@ -664,7 +701,8 @@
       "price": 1200000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Etherea, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,200,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Etherea, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,200,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p48.jpg"
     },
     {
       "id": "p49",
@@ -676,7 +714,8 @@
       "price": 1254000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Riviera 55, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,254,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera 55, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,254,000. Handover: Q3 2026. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p49.jpg"
     },
     {
       "id": "p50",
@@ -688,7 +727,8 @@
       "price": 1304000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Skyhall, a Binghatti development in Business Bay. Starting from AED 1,304,000. Handover: Q3 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Skyhall, a Binghatti development in Business Bay. Starting from AED 1,304,000. Handover: Q3 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p50.jpg"
     },
     {
       "id": "p51",
@@ -700,7 +740,8 @@
       "price": 3233000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Safa One de Grisogono, a DAMAC development in Safa Park. Starting from AED 3,233,000. Handover: Q4 2026. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Safa One de Grisogono, a DAMAC development in Safa Park. Starting from AED 3,233,000. Handover: Q4 2026. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p51.jpg"
     },
     {
       "id": "p52",
@@ -712,7 +753,8 @@
       "price": 2851000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Diamondz, a Danube development in JLT (Jumeirah Lake Towers). Starting from AED 2,851,000. Handover: Q1 2028. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Diamondz, a Danube development in JLT (Jumeirah Lake Towers). Starting from AED 2,851,000. Handover: Q1 2028. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p52.jpg"
     },
     {
       "id": "p53",
@@ -724,7 +766,8 @@
       "price": 820000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti HillCrest, a Binghatti development in Arjan. Starting from AED 820,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti HillCrest, a Binghatti development in Arjan. Starting from AED 820,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p53.jpg"
     },
     {
       "id": "p54",
@@ -736,7 +779,8 @@
       "price": 1869000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Golf Greens, a DAMAC development in Damac Hills. Starting from AED 1,869,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Golf Greens, a DAMAC development in Damac Hills. Starting from AED 1,869,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p54.jpg"
     },
     {
       "id": "p55",
@@ -748,7 +792,8 @@
       "price": 829000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Azizi Leily, a Azizi development in Al Jaddaf. Starting from AED 829,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Leily, a Azizi development in Al Jaddaf. Starting from AED 829,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p55.jpg"
     },
     {
       "id": "p56",
@@ -760,7 +805,8 @@
       "price": 1058000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Binghatti Titania, a Binghatti development in Majan. Starting from AED 1,058,000. Handover: Q1 2027. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Titania, a Binghatti development in Majan. Starting from AED 1,058,000. Handover: Q1 2027. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p56.jpg"
     },
     {
       "id": "p57",
@@ -772,7 +818,8 @@
       "price": 3939000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Damac Bay, a DAMAC development in Dubai Harbour. Starting from AED 3,939,000. Handover: Q3 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Damac Bay, a DAMAC development in Dubai Harbour. Starting from AED 3,939,000. Handover: Q3 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p57.jpg"
     },
     {
       "id": "p58",
@@ -784,7 +831,8 @@
       "price": 718000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Skyflame, a Binghatti development in Majan. Starting from AED 718,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Skyflame, a Binghatti development in Majan. Starting from AED 718,000. Handover: Q4 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p58.jpg"
     },
     {
       "id": "p59",
@@ -796,7 +844,8 @@
       "price": 1981000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "350 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 1,981,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "350 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 1,981,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p59.jpg"
     },
     {
       "id": "p60",
@@ -808,7 +857,8 @@
       "price": 4189000,
       "paymentPlan": "20/80%",
       "tag": "",
-      "description": "Palm Beach Tower 3, a Nakheel development in Dubai Marina. Starting from AED 4,189,000. Handover: Q4 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Palm Beach Tower 3, a Nakheel development in Dubai Marina. Starting from AED 4,189,000. Handover: Q4 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p60.jpg"
     },
     {
       "id": "p61",
@@ -820,7 +870,8 @@
       "price": 1600000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Binghatti Royale, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,600,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Royale, a Binghatti development in JVC (Jumeirah Village Circle). Starting from AED 1,600,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p61.jpg"
     },
     {
       "id": "p62",
@@ -832,7 +883,8 @@
       "price": 1672000,
       "paymentPlan": "30/70%",
       "tag": "",
-      "description": "The Edge, a Select Group development in Business Bay. Starting from AED 1,672,000. Handover: Q3 2026. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "The Edge, a Select Group development in Business Bay. Starting from AED 1,672,000. Handover: Q3 2026. Payment plan: 30/70%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p62.jpg"
     },
     {
       "id": "p63",
@@ -844,7 +896,8 @@
       "price": 19400000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Bugatti Residences by Binghatti, a Binghatti development in Business Bay. Starting from AED 19,400,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Bugatti Residences by Binghatti, a Binghatti development in Business Bay. Starting from AED 19,400,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p63.jpg"
     },
     {
       "id": "p64",
@@ -856,7 +909,8 @@
       "price": 1449000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "Riviera Beachfront, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,449,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera Beachfront, a Azizi development in Azizi Riviera at Meydan One. Starting from AED 1,449,000. Handover: Q4 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p64.jpg"
     },
     {
       "id": "p65",
@@ -868,7 +922,8 @@
       "price": 1312000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Azizi Jewel, a Azizi development in Jebel Ali Village. Starting from AED 1,312,000. Handover: Q1 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Jewel, a Azizi development in Jebel Ali Village. Starting from AED 1,312,000. Handover: Q1 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p65.jpg"
     },
     {
       "id": "p66",
@@ -880,7 +935,8 @@
       "price": 4328000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Anwa Aria, a Omniyat development in Maritime City. Starting from AED 4,328,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Anwa Aria, a Omniyat development in Maritime City. Starting from AED 4,328,000. Handover: Q1 2027. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p66.jpg"
     },
     {
       "id": "p67",
@@ -892,7 +948,8 @@
       "price": 1350000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Project Maybach, a Binghatti development in Meydan (Nad Al Sheba 1). Starting from AED 1,350,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Project Maybach, a Binghatti development in Meydan (Nad Al Sheba 1). Starting from AED 1,350,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p67.jpg"
     },
     {
       "id": "p68",
@@ -904,7 +961,8 @@
       "price": 2271000,
       "paymentPlan": "60/40%",
       "tag": "Resale",
-      "description": "320 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 2,271,000. Handover: Q3 2027. Payment plan: 60/40%. Listed as resale. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "320 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 2,271,000. Handover: Q3 2027. Payment plan: 60/40%. Listed as resale. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p68.jpg"
     },
     {
       "id": "p69",
@@ -916,7 +974,8 @@
       "price": 14499000,
       "paymentPlan": "",
       "tag": "",
-      "description": "Peninsula Jumeirah living Business Bay, a Select Group development in Business Bay. Starting from AED 14,499,000. Handover: Q4 2025. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Peninsula Jumeirah living Business Bay, a Select Group development in Business Bay. Starting from AED 14,499,000. Handover: Q4 2025. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p69.jpg"
     },
     {
       "id": "p70",
@@ -928,7 +987,8 @@
       "price": 974000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Azizi Arian, a Azizi development in Jebel Ali Freezone Extension. Starting from AED 974,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Azizi Arian, a Azizi development in Jebel Ali Freezone Extension. Starting from AED 974,000. Handover: Q4 2027. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p70.jpg"
     },
     {
       "id": "p71",
@@ -940,7 +1000,8 @@
       "price": 55069000,
       "paymentPlan": "100%",
       "tag": "",
-      "description": "S-tower, a Sobha development in Dubai Internet City. Starting from AED 55,069,000. Handover: Q2 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "S-tower, a Sobha development in Dubai Internet City. Starting from AED 55,069,000. Handover: Q2 2025. Payment plan: 100%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p71.jpg"
     },
     {
       "id": "p72",
@@ -952,7 +1013,8 @@
       "price": 3420000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "310 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 3,420,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "310 Riverside Crescent, a Sobha development in Sobha Hartland 2. Starting from AED 3,420,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p72.jpg"
     },
     {
       "id": "p73",
@@ -964,7 +1026,8 @@
       "price": 1704000,
       "paymentPlan": "40/60%",
       "tag": "",
-      "description": "Sobha One, a Sobha development in Ras Al Khor. Starting from AED 1,704,000. Handover: Q4 2026. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Sobha One, a Sobha development in Ras Al Khor. Starting from AED 1,704,000. Handover: Q4 2026. Payment plan: 40/60%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p73.jpg"
     },
     {
       "id": "p74",
@@ -976,7 +1039,8 @@
       "price": 57231000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Orla Infinity Dorchester Collection, a Omniyat development in Palm Jumeirah. Starting from AED 57,231,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Orla Infinity Dorchester Collection, a Omniyat development in Palm Jumeirah. Starting from AED 57,231,000. Handover: Q4 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p74.jpg"
     },
     {
       "id": "p75",
@@ -988,7 +1052,8 @@
       "price": 1889000,
       "paymentPlan": "20/80%",
       "tag": "",
-      "description": "Riviera 60, a Azizi development in Meydan. Starting from AED 1,889,000. Handover: Q3 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Riviera 60, a Azizi development in Meydan. Starting from AED 1,889,000. Handover: Q3 2026. Payment plan: 20/80%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p75.jpg"
     },
     {
       "id": "p76",
@@ -1000,7 +1065,8 @@
       "price": 2264000,
       "paymentPlan": "90/10%",
       "tag": "",
-      "description": "Clearpoint, a Emaar development in Mina Rashid. Starting from AED 2,264,000. Handover: Q3 2027. Payment plan: 90/10%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Clearpoint, a Emaar development in Mina Rashid. Starting from AED 2,264,000. Handover: Q3 2027. Payment plan: 90/10%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p76.jpg"
     },
     {
       "id": "p77",
@@ -1012,7 +1078,8 @@
       "price": 734000,
       "paymentPlan": "50/50%",
       "tag": "",
-      "description": "Damac Lagoons Views Phase 3, a DAMAC development in Damac Lagoons. Starting from AED 734,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Damac Lagoons Views Phase 3, a DAMAC development in Damac Lagoons. Starting from AED 734,000. Handover: Q4 2027. Payment plan: 50/50%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p77.jpg"
     },
     {
       "id": "p78",
@@ -1024,7 +1091,8 @@
       "price": 3127000,
       "paymentPlan": "80/20%",
       "tag": "",
-      "description": "Creek Waters 2, a Emaar development in Dubai Creek Harbour. Starting from AED 3,127,000. Handover: Q4 2027. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Creek Waters 2, a Emaar development in Dubai Creek Harbour. Starting from AED 3,127,000. Handover: Q4 2027. Payment plan: 80/20%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p78.jpg"
     },
     {
       "id": "p79",
@@ -1036,7 +1104,8 @@
       "price": 832000,
       "paymentPlan": "70/30%",
       "tag": "",
-      "description": "Binghatti Elite, a Binghatti development in Dubai Production City. Starting from AED 832,000. Handover: Q2 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Binghatti Elite, a Binghatti development in Dubai Production City. Starting from AED 832,000. Handover: Q2 2026. Payment plan: 70/30%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p79.jpg"
     },
     {
       "id": "p80",
@@ -1048,7 +1117,8 @@
       "price": 43331000,
       "paymentPlan": "60/40%",
       "tag": "",
-      "description": "Vela Dorchester Collection, a Omniyat development in Business Bay. Starting from AED 43,331,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing."
+      "description": "Vela Dorchester Collection, a Omniyat development in Business Bay. Starting from AED 43,331,000. Handover: Q4 2027. Payment plan: 60/40%. Speak to a Somara Realty consultant for unit availability and current pricing.",
+      "image": "/images/properties/p80.jpg"
     }
   ]
 }
