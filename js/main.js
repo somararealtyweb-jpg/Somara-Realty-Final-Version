@@ -399,7 +399,7 @@
         scroll.innerHTML = data.reels.slice(0, 5).map(function (reel) {
           return (
             '<a class="insta-item is-reel" href="' + reel.permalink + '" target="_blank" rel="noopener noreferrer">' +
-              '<video src="' + reel.video + '" poster="' + reel.thumbnail + '" muted loop playsinline preload="metadata"></video>' +
+              '<video src="' + reel.video + '" poster="' + reel.thumbnail + '" muted loop playsinline preload="auto"></video>' +
               '<span class="insta-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></span>' +
             '</a>'
           );
@@ -409,6 +409,15 @@
         // feels alive as you scroll the strip, and doesn't play 10 videos
         // at once in the background.
         var videos = scroll.querySelectorAll("video");
+        // Instagram's thumbnail image is small and looks soft on phones. As
+        // soon as the video itself has loaded, show its own first frame
+        // (full resolution) instead of the poster.
+        videos.forEach(function (v) {
+          v.addEventListener("loadeddata", function () {
+            try { v.currentTime = 0.05; } catch (e) {}
+            v.removeAttribute("poster");
+          }, { once: true });
+        });
         if ("IntersectionObserver" in window) {
           var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -846,6 +855,28 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       var developer = fieldVal("searchDeveloper");
       var propName = fieldVal("searchProperty").toLowerCase();
       var budget = fieldVal("searchBudget");
+      var type = fieldVal("searchType");
+
+      // Bedroom range from unitTypes text, e.g. "Studio – 3 BR" -> {min:0,max:3}.
+      function bedroomRange(p) {
+        var t = String(p.unitTypes || "").toLowerCase();
+        if (!t) return null;
+        var nums = (t.match(/\d+/g) || []).map(Number);
+        if (/studio/.test(t)) nums.push(0);
+        if (!nums.length) return null;
+        return { min: Math.min.apply(null, nums), max: Math.max.apply(null, nums) };
+      }
+      function matchesType(p) {
+        if (!type) return true;
+        var text = ((p.title || "") + " " + (p.description || "") + " " + (p.unitTypes || "")).toLowerCase();
+        if (type === "villa" || type === "townhouse" || type === "penthouse") return text.indexOf(type) !== -1;
+        var r = bedroomRange(p);
+        if (!r) return false;
+        if (type === "studio") return r.min === 0;
+        if (type === "4+") return r.max >= 4;
+        var n = Number(type);
+        return n >= r.min && n <= r.max;
+      }
 
       function run(skip) {
         return PROPERTIES.filter(function (p) {
@@ -854,7 +885,8 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
           var matchDeveloper = skip.developer || !developer || p.developer === developer;
           var matchProperty = skip.property || !propName || (p.title || "").toLowerCase().indexOf(propName) !== -1;
           var matchBudget = skip.budget || !budget || budgetTierOf(p) === budget;
-          return matchLocation && matchDeveloper && matchProperty && matchBudget;
+          var matchType = skip.type || matchesType(p);
+          return matchLocation && matchDeveloper && matchProperty && matchBudget && matchType;
         });
       }
 
@@ -866,14 +898,15 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       // empty page, with a note saying what was ignored.
       if (filtered.length === 0) {
         var relax = [
-          { skip: { budget: true }, label: "budget", used: !!budget },
-          { skip: { budget: true, location: true }, label: "budget and location", used: !!budget || !!location },
-          { skip: { budget: true, location: true, developer: true }, label: "budget, location and developer", used: !!budget || !!location || !!developer }
+          { skip: { type: true }, label: "property type", used: !!type },
+          { skip: { type: true, budget: true }, label: "property type and budget", used: !!type || !!budget },
+          { skip: { type: true, budget: true, location: true }, label: "property type, budget and location", used: !!type || !!budget || !!location },
+          { skip: { type: true, budget: true, location: true, developer: true }, label: "property type, budget, location and developer", used: !!type || !!budget || !!location || !!developer }
         ];
         for (var i = 0; i < relax.length; i++) {
           if (!relax[i].used) continue;
           var sk = relax[i].skip;
-          var stillActive = (!sk.location && location) || (!sk.developer && developer) || (!sk.property && propName) || (!sk.budget && budget);
+          var stillActive = (!sk.location && location) || (!sk.developer && developer) || (!sk.property && propName) || (!sk.budget && budget) || (!sk.type && type);
           if (!stillActive) continue; // never drop every filter (would list everything)
           var alt = run(sk);
           if (alt.length) {
