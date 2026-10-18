@@ -953,7 +953,11 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
     var monthlyEl = document.getElementById("mcMonthly");
     var loanEl = document.getElementById("mcLoan");
     var interestEl = document.getElementById("mcInterest");
-    var totalEl = document.getElementById("mcTotal");
+    var downEl = document.getElementById("mcDown");
+    var dldEl = document.getElementById("mcDld");
+    var otherEl = document.getElementById("mcOtherFees");
+    var cashEl = document.getElementById("mcCash");
+    var minEl = document.getElementById("mcDownMin");
     var ctaBtn = document.getElementById("mcConsultBtn");
 
     function num(v) { return parseFloat(String(v).replace(/[^0-9.]/g, "")) || 0; }
@@ -961,6 +965,10 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
 
     function calc() {
       var price = num(priceEl.value);
+      // Central Bank rule for expat first-home buyers: min 20% up to AED 5M, 30% above.
+      var minPct = price > 5000000 ? 30 : 20;
+      downPctEl.min = String(minPct);
+      if (num(downPctEl.value) < minPct) downPctEl.value = String(minPct);
       var pct = num(downPctEl.value);
       var rate = num(rateEl.value);
       var years = num(yearsEl.value);
@@ -975,13 +983,25 @@ function attachAutocomplete(inputId, listId, LOCATIONS) {
       }
       var total = monthly * n;
 
+      // Buying costs (estimates)
+      var dld = price * 0.04;
+      var regFee = loan > 0 ? loan * 0.0025 + 290 : 0;
+      var agencyFee = price * 0.02 * 1.05;
+      var trusteeFee = (price < 500000 ? 2000 : 4000) * 1.05;
+      var otherFees = regFee + agencyFee + trusteeFee;
+      var cash = down + dld + otherFees;
+
       downPctOut.textContent = pct + "%";
       yearsOut.textContent = years + (years === 1 ? " year" : " years");
       downAmtEl.textContent = aed(down);
       monthlyEl.textContent = aed(monthly);
       loanEl.textContent = aed(loan);
       interestEl.textContent = aed(Math.max(total - loan, 0));
-      totalEl.textContent = aed(total + down);
+      downEl.textContent = aed(down);
+      dldEl.textContent = aed(dld);
+      otherEl.textContent = aed(otherFees);
+      cashEl.textContent = aed(cash);
+      if (minEl) minEl.textContent = "Minimum " + minPct + "% for expat buyers at this price.";
     }
 
     // Price box: show thousands separators while typing, keep the caret sane.
