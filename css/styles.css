@@ -1339,3 +1339,8 @@ h4 { font-family: var(--font-sans); font-weight: 600; font-size: 1.125rem; }
 .mc-breakdown dd { white-space: nowrap; }
 .mc-breakdown dt { min-width: 0; }
 .mortgage-result .btn { white-space: normal; text-align: center; padding-inline: 1rem; }
+
+/* Oct 18 (2): hero search now has Location + Type + Budget */
+@media (min-width: 800px) {
+  .hero-search form.hero-search-compact { grid-template-columns: repeat(3, 1fr) auto; }
+}
